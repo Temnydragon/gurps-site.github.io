@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/gurps-site.github.io/static/css/main.e6c13ad2.css",
+    "main.js": "/gurps-site.github.io/static/js/main.692d44e9.js",
+    "index.html": "/gurps-site.github.io/index.html",
+    "main.e6c13ad2.css.map": "/gurps-site.github.io/static/css/main.e6c13ad2.css.map",
+    "main.692d44e9.js.map": "/gurps-site.github.io/static/js/main.692d44e9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.692d44e9.js"
+  ]
+}
