@@ -4,5 +4,189 @@
 }
 
 .page-header {
-  /*background: url(paper-sheet_top.jpg) no-repeat;*/
+  background: url(paper-sheet_top.jpg) no-repeat;
+}
+
+.page-main {
+  text-align: center;
+}
+
+.page-footer {
+  text-align: center;
+}
+
+.header-content--box {
+  margin: 0;
+  padding: 0;
+  padding-top: 30px;
+  margin-left: 130px;
+  margin-right: 130px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 260px 1fr;
+  grid-row: auto;
+  border-bottom: 2px solid #000000;
+}
+
+.main-content--box {
+  margin-left: 20vw;
+  margin-right: 20vw;
+}
+
+.main-content--text {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+.navigation-list {
+  margin: 0;
+  padding: 0;
+  padding-left: 30px;
+  padding-right: 30px;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.flexcontainer--imageandtext {
+  display: flex;
+  /*width: 1140px;*/
+  margin: 0 auto;
+  margin-left: 20vw;
+  margin-right: 20vw;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+.flexcontainer--imageandpoints {
+  display: flex;
+  /*width: 1140px;*/
+  margin: 0 auto;
+  margin-left: 20vw;
+  margin-right: 20vw;
+  padding-bottom: 30px;
+}
+
+.gridcontainer-annotationblock {
+  position: relative;
+  margin-top: 30px;
+}
+
+.gridcontainer--mainimagetext {
+  display: grid;
+  padding: 4px;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  margin-left: 30vw;
+  width: 18vw;
+  max-height: max-content;
+  border-radius: 0 0 20px 20px;
+}
+
+.gridcontainer--points {
+  display: grid;
+  gap: 30px;
+  padding-left: 30px;
+  padding-right: 10px;
+}
+
+
+
+/*Правило для раздельного логотипа*/
+.sytename--box {
+  display: grid;
+  grid-template-columns: 84px 176px;
+}
+
+.sytename--link {
+  text-decoration: none; /*убираем подчеркивание текста ссылок*/
+  color: #F8BE24; /*меняем цвет ссылок*/
+  padding: 18px 0px 18px 0px; /*добавляем отступ*/
+  margin-right: 12px;
+  font-size: 36px;
+  line-height: 42px;
+  font-weight: bold;
+  font-family: "Book Antiqua", serif;
+  text-align: center;
+  text-shadow: black 1px 0 1px , black 0 1px 1px, black -1px 0 1px, black 0 -1px 1px;
+  display: block;
+}
+
+.sytename--textoflogo {
+  padding: 18px 0px 18px 0px; /*добавляем отступ*/
+  margin-right: 12px;
+}
+
+.logo {
+  padding: 21px 0px 21px 0px;
+  margin-left: 12px;
+  width: 72px;
+  height: 78px;
+}
+
+.linkstyle--textlink {
+  display: inline;
+  color:#4770FF;
+}
+
+.dropdown {
+  background-color: #F5E5BC;
+  border: 2px solid black;
+  border-radius: 0 0 20px 20px;
+}
+
+a {
+  text-decoration: none; /*убираем подчеркивание текста ссылок*/
+  color:#000000; /*меняем цвет ссылок*/
+  display: block;
+}
+
+a:hover {
+  color:#000000;
+  text-shadow: rgba(0, 0, 0, 0.25) 0px 4px 3.5px;
+}
+
+li:hover {
+  cursor: pointer;
+}
+ 
+ul li ul {
+  visibility: hidden;
+  list-style: none;
+  opacity: 0;
+  position: absolute;
+  transition: all 0.35s ease;
+  margin-top: 37px;
+  padding: 12px;
+  /*width: 162px;*/
+  width: 8.5vw;
+
+  z-index: 1;
+}
+ 
+ul li:hover > ul,
+ul li:focus-within > ul,
+ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+}
+ 
+ul li ul li {
+  clear: both;
+}
+
+/*Стилизация отдельных элементов с уже существующими стилями*/
+
+.bordernone {
+  border: none;
+}
+
+.topmargin {
+  margin-top: 60px;
 }

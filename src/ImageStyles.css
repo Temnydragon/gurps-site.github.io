@@ -1,0 +1,46 @@
+.image-style--mainimage {
+  display: block;
+  padding: 0;
+  width: 60%;
+  /*width: 1140px;*/
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+.image-style--imageinblock {
+  align-self: center;
+  height: 292px;
+  max-width: 100%;
+  border-radius: 32px;
+}
+
+.image-style--imagenearpoints {
+  height: 490px;
+  max-width: 100%;
+  border-radius: 32px;
+  padding-left: 10px;
+  align-self: center;
+}
+
+.image-style--penimage {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 18vw;
+}
+
+.image-style--cofeeimage {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin-bottom: 28vw;
+}
+
+.image-style--d20_diceimage {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 168px;
+  width: 8.8vw;
+  margin-bottom: 16vw;
+}

@@ -1,0 +1,109 @@
+.text-style--headings {
+  font-weight: bold;
+  font-family: "Book Antiqua", serif;
+  /*font-size: 38px;*/
+  font-size: 2vw;
+  line-height: 45px;
+  text-align: center;
+  vertical-align: middle;
+  color: #000000;
+}
+
+.text-style--dropdownheadings {
+  font-weight: bold;
+  font-family: "Book Antiqua", serif;
+  font-size: 1.6vw;
+  /*font-size: 32px;*/
+  line-height: 42px;
+  text-align: center;
+  vertical-align: middle;
+  color: #000000;
+  padding-bottom: 18px;
+}
+
+.last-dropdownheadings {
+  padding-bottom: 0px;
+  padding-top: 18px;
+}
+
+.bordered {
+  border-bottom: 2px solid black;
+}
+
+.text-style--title {
+  font-size: 2.5vw;
+  /*font-size: 48px;*/
+  line-height: 57px;
+  font-weight: bold;
+  font-family: "Book Antiqua", serif;
+  text-align: left;
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-bottom: 30px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+.text-style--subtitle {
+  font-size: 1.9vw;
+  /*font-size: 36px;*/
+  line-height: 43px;
+  font-weight: bold;
+  font-style: italic;
+  font-family: "Book Antiqua", serif;
+  text-align: left;
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding: 0;
+  padding-bottom: 15px;
+  vertical-align: middle;
+  text-shadow: rgba(0, 0, 0, 0.25) 0px 4px 3.5px;
+}
+
+.text-style--maintext {
+  font-family: "Book Antiqua", serif;
+  /*font-size: 24px;*/
+  font-size: 1.25vw;
+  line-height: 28px;
+  text-align: left;
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.text-style--mainimage_title {
+  margin: 0;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  font-weight: bold;
+  font-family: "Book Antiqua", serif;
+  font-size: 1.67vw;
+  /*font-size: 32px;*/
+  line-height: 39px;
+  line-height: 2.1vw;
+  color: #FFFFFF;
+}
+
+.text-style--mainimage_text {
+  margin: 0;
+  font-family: "Book Antiqua", serif;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 24px;
+  font-size: 1.25vw;
+  line-height: 28px;
+  line-height: 1.45vw;
+  color: #C5A5A5;
+}
+
+.text-style--buttontext {
+  font-family: "Book Antiqua", serif;
+  /*font-size: 19px;*/
+  font-size: 1vw;
+  line-height: 28px;
+  text-align: center;
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
