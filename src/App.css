@@ -190,3 +190,7 @@ ul li ul li {
 .topmargin {
   margin-top: 60px;
 }
+
+.textlinebreak {
+  white-space: pre-line;
+}
