@@ -107,3 +107,13 @@
   margin-block-start: 0;
   margin-block-end: 0;
 }
+
+.text-style--footertext {
+  font-family: "Book Antiqua", serif;
+  font-size: 1vw;
+  line-height: 28px;
+  text-align: center;
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}

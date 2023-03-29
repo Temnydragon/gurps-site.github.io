@@ -1,6 +1,9 @@
 
 .body-style {
   background: #F5E5BC no-repeat;
+  position: relative;
+  margin: 0;
+  padding: 0;
 }
 
 .page-header {
@@ -13,6 +16,8 @@
 
 .page-footer {
   text-align: center;
+  margin-top: 50px;
+  padding-bottom: 20px;
 }
 
 .header-content--box {
@@ -193,4 +198,9 @@ ul li ul li {
 
 .textlinebreak {
   white-space: pre-line;
+}
+
+.rightimgtextblock {
+  padding-left: 30px;
+  padding-right: 10px;
 }
