@@ -61,6 +61,10 @@
   text-shadow: rgba(0, 0, 0, 0.25) 0px 4px 3.5px;
 }
 
+.text-style--subtitle.nopadding {
+  padding: 0;
+}
+
 .text-style--maintext {
   font-family: "Book Antiqua", serif;
   /*font-size: 24px;*/

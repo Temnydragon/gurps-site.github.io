@@ -196,6 +196,10 @@ ul li ul li {
   margin-top: 60px;
 }
 
+.bottompad {
+  padding-bottom: 30px;;
+}
+
 .textlinebreak {
   white-space: pre-line;
 }
@@ -203,4 +207,14 @@ ul li ul li {
 .rightimgtextblock {
   padding-left: 30px;
   padding-right: 10px;
+}
+
+.leftimgtextblock {
+  padding-left: 10px;
+  padding-right: 30px;
+}
+
+.rightandleftpadding {
+  padding-left: 30px;
+  padding-right: 30px;
 }

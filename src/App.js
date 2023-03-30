@@ -6,7 +6,6 @@ import FirstSteps from './pages/FirstSteps';
 import Calculator from './pages/Calculator';
 import Gameplay from './pages/Gameplay';
 import Mechanics from './pages/Mechanics';
-import MainContent from './Annotation';
 import './App.css';
 import MainPage from './pages/MainPage';
 
