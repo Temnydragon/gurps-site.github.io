@@ -16,12 +16,12 @@ class App extends Component {
     <>
       <Header />
       <Routes>
-        <Route exact path='/' element={<MainPage pagename={'main'}/>} />
-        <Route exact path='/Gameplay' element={<Gameplay pagename={'gameplay'}/>} />
-        <Route exact path='/Mechanics' element={<Mechanics pagename={'mechanics'}/>} />
-        <Route exact path='/FirstSteps' element={<FirstSteps pagename={'firststeps'}/>} />
-        <Route exact path='/ForMasterAndPlayer' element={<ForMasterAndPlayer/>} />
-        <Route exact path='/Calculator' element={<Calculator/>} />
+        <Route exact path='/' element={<MainPage />} />
+        <Route exact path='/Gameplay' element={<Gameplay />} />
+        <Route exact path='/Mechanics' element={<Mechanics />} />
+        <Route exact path='/FirstSteps' element={<FirstSteps />} />
+        <Route exact path='/ForMasterAndPlayer' element={<ForMasterAndPlayer />} />
+        <Route exact path='/Calculator' element={<Calculator />} />
       </Routes>
     </>
     )
