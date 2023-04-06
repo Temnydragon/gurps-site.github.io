@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import HitZone from '../CalculatorComponents/HitZone';
 
 const Calculator = () => {
     return (
@@ -52,63 +53,19 @@ const Calculator = () => {
 
               <section class="gridcontainer-allhitzones">
                 <div>
-                  <div class="gridcontainer-hitzone">
-                    <input type="radio" name="zone" id="eyeszone-id" value="-9" />
-                    <label for="eyeszone-id" class="text-style--maintext">Глаза</label>
-                    <p class="text-style--paragraphzonemodifier" >-9</p>
-                  </div>
-                  <div class="gridcontainer-hitzone">
-                    <input type="radio" name="zone" id="skullzone-id" value="-7" />
-                    <label for="skullzone-id" class="text-style--maintext">Череп</label>
-                    <p class="text-style--paragraphzonemodifier" >-7</p>
-                  </div>
-                  <div class="gridcontainer-hitzone">
-                    <input type="radio" name="zone" id="facezone-id" value="-5" />
-                    <label for="facezone-id" class="text-style--maintext">Лицо</label>
-                    <p class="text-style--paragraphzonemodifier" >-5</p>
-                  </div>
-                  <div class="gridcontainer-hitzone">
-                    <input type="radio" name="zone" id="neckzone-id" value="-5" />
-                    <label for="neckzone-id" class="text-style--maintext">Шея</label>
-                    <p class="text-style--paragraphzonemodifier" >-5</p>
-                  </div>
-                  <div class="gridcontainer-hitzone">
-                    <input type="radio" name="zone" id="torsozone-id" value="0" checked />
-                    <label for="torsozone-id" class="text-style--maintext">Торс</label>
-                    <p class="text-style--paragraphzonemodifier" >0</p>
-                  </div>
-                  <div class="gridcontainer-hitzone">
-                    <input type="radio" name="zone" id="organszone-id" value="-3" />
-                    <label for="organszone-id" class="text-style--maintext">Органы</label>
-                    <p class="text-style--paragraphzonemodifier" >-3</p>
-                  </div>
+                  <HitZone zoneId={'eyeszone-id'} zoneValue={'-9'} labelText={'Глаза'} checkFlag={'false'} />
+                  <HitZone zoneId={'skullzone-id'} zoneValue={'-7'} labelText={'Череп'} checkFlag={'false'} />
+                  <HitZone zoneId={'facezone-id'} zoneValue={'-5'} labelText={'Лицо'} checkFlag={'false'} />
+                  <HitZone zoneId={'neckzone-id'} zoneValue={'-5'} labelText={'Шея'} checkFlag={'false'} />
+                  <HitZone zoneId={'torsozone-id'} zoneValue={'0'} labelText={'Торс'} checkFlag={'true'} />
+                  <HitZone zoneId={'organszone-id'} zoneValue={'-3'} labelText={'Органы'} checkFlag={'false'} />
                 </div>
                 <div>
-                  <div class="gridcontainer-hitzone">
-                    <input type="radio" name="zone" id="armzone-id" value="-2" />
-                    <label for="armzone-id" class="text-style--maintext">Рука</label>
-                    <p class="text-style--paragraphzonemodifier" >-2</p>
-                  </div>
-                  <div class="gridcontainer-hitzone">
-                    <input type="radio" name="zone" id="handzone-id" value="-4" />
-                    <label for="handzone-id" class="text-style--maintext">Кисть</label>
-                    <p class="text-style--paragraphzonemodifier" >-4</p>
-                  </div>
-                  <div class="gridcontainer-hitzone">
-                    <input type="radio" name="zone" id="groinzone-id" value="-3" />
-                    <label for="groinzone-id" class="text-style--maintext">Пах</label>
-                    <p class="text-style--paragraphzonemodifier" >-3</p>
-                  </div>
-                  <div class="gridcontainer-hitzone">
-                    <input type="radio" name="zone" id="legzone-id" value="-2" />
-                    <label for="legzone-id" class="text-style--maintext">Нога</label>
-                    <p class="text-style--paragraphzonemodifier" >-2</p>
-                  </div>
-                  <div class="gridcontainer-hitzone">
-                    <input type="radio" name="zone" id="feetzone-id" value="-4" />
-                    <label for="feetzone-id" class="text-style--maintext">Глаза</label>
-                    <p class="text-style--paragraphzonemodifier">-4</p>
-                  </div>
+                  <HitZone zoneId={'armzone-id'} zoneValue={'-2'} labelText={'Рука'} checkFlag={'false'} />
+                  <HitZone zoneId={'handzone-id'} zoneValue={'-4'} labelText={'Кисть'} checkFlag={'false'} />
+                  <HitZone zoneId={'groinzone-id'} zoneValue={'-3'} labelText={'Пах'} checkFlag={'false'} />
+                  <HitZone zoneId={'legzone-id'} zoneValue={'-2'} labelText={'Нога'} checkFlag={'false'} />
+                  <HitZone zoneId={'feetzone-id'} zoneValue={'-4'} labelText={'Ступня'} checkFlag={'false'} />
                 </div>
               </section>
 
@@ -126,9 +83,10 @@ const Calculator = () => {
               </div>
             </section>
           </form>
-
-
         </main>
+
+        <footer className='page-footer'>
+        </footer>
       </>
     );
   };

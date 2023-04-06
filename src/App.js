@@ -18,11 +18,11 @@ class App extends Component {
       <Header />
       <Routes>
         <Route exact path='/' element={<MainPage />} />
-        <Route exact path='/Gameplay' element={<Gameplay />} />
-        <Route exact path='/Mechanics' element={<Mechanics />} />
-        <Route exact path='/FirstSteps' element={<FirstSteps />} />
-        <Route exact path='/ForMasterAndPlayer' element={<ForMasterAndPlayer />} />
-        <Route exact path='/Calculator' element={<Calculator />} />
+        <Route path='/Gameplay' element={<Gameplay />} />
+        <Route path='/Mechanics' element={<Mechanics />} />
+        <Route path='/FirstSteps' element={<FirstSteps />} />
+        <Route path='/ForMasterAndPlayer' element={<ForMasterAndPlayer />} />
+        <Route path='/Calculator' element={<Calculator />} />
       </Routes>
     </>
     )
