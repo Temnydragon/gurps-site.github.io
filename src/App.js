@@ -7,6 +7,7 @@ import Calculator from './pages/Calculator';
 import Gameplay from './pages/Gameplay';
 import Mechanics from './pages/Mechanics';
 import './App.css';
+import './Calculator.css'
 import MainPage from './pages/MainPage';
 
 class App extends Component {

@@ -121,3 +121,18 @@
   margin-block-start: 0;
   margin-block-end: 0;
 }
+
+/* Стили для элементов на странице калькулятор*/
+
+.text-style--paragraphzonemodifier {
+  font-family: "Book Antiqua", serif;
+  /*font-size: 24px;*/
+  font-size: 1.25vw;
+  line-height: 28px;
+  text-align: left;
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+
+  text-align: end;
+}
