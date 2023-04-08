@@ -4,9 +4,10 @@ import HitZone from './HitZone';
 class DistAttackForm extends Component {
     constructor(props) {
         super(props)
-        this.state = { basikskill:10, distance:1, speed:0, size:0, accuracy:0, shots:1, zone:0, effectiveskill:10}
+        this.state = { basikskill:10, distance:1, speed:0, size:0, accuracy:0, shots:1, zone:0, effectiveskill:10, modifierDistAndSpeed:'+0'}
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleDistAndSpeedChange = this.handleDistAndSpeedChange.bind(this)
     }
 
     // Form submitting logic, prevent default page refresh 
@@ -26,20 +27,57 @@ class DistAttackForm extends Component {
         `)
     }
 
+    
+    handleChange(event){
+      this.setState({
+        // Computed property names
+        // keys of the objects are computed dynamically
+        [event.target.name] : event.target.value
+      })
+
+      this.setState(this.ComputEffectiveSkill)
+    }
+
     ComputEffectiveSkill(state) {
       return {
         effectiveskill: parseInt(state.basikskill) + parseInt(state.size) + parseInt(state.accuracy)
       };
     }
 
-    handleChange(event){
-        this.setState({
-          // Computed property names
-          // keys of the objects are computed dynamically
-          [event.target.name] : event.target.value
-        })
+    ComputeDistSpeedModifier(state, props) {
+      return {
+        modifierDistAndSpeed:  parseInt(state.modifierDistAndSpeed) + parseInt(props.modvalue)
+      };
+    }
 
-        this.setState(this.ComputEffectiveSkill)
+    handleDistAndSpeedChange(event){
+      const DistSpeedNumbers = [2, 3, 5, 7, 10, 15, 20, 30, 50, 70, 100, 150, 200, 300, 500, 700, 1000, 1500, 2000, 3000, 5000];
+
+      this.setState({
+        [event.target.name] : event.target.value
+      })
+
+      const DistanceAndSpeedValue = parseInt(this.state.distance) + parseInt(this.state.speed);
+      /*let i = 0;
+      let DistSpeedModifier = -22;
+      while (DistanceAndSpeedValue <= DistSpeedNumbers[i] && i < DistSpeedNumbers.length) {
+        DistSpeedModifier++;
+        i++;
+      }*/
+
+      let DistSpeedModifier = 0;
+      for (let i = 0; i < DistSpeedNumbers.length-1; i++) {
+        if (DistanceAndSpeedValue >= DistSpeedNumbers[i]) {
+          DistSpeedModifier--;
+        }
+      }
+
+      this.setState({
+        modifierDistAndSpeed:  DistSpeedModifier
+      })
+      /*this.setState(this.ComputeDistSpeedModifier(modvalue = {DistSpeedModifier}))*/
+
+      this.setState(this.ComputEffectiveSkill)
     }
 
     render() {
@@ -65,11 +103,11 @@ class DistAttackForm extends Component {
               <div className='borderedbottom-block'>
                 <div class="modifiers-box--double">
                   <label for="distance-id" class="text-style--maintext distance">Расстояние до цели (в ярдах)</label>
-                  <input class="text-style--maintext distcount" type="number" name="distance" id="distance-id" value={this.state.distance} min="0" onChange={this.handleChange}/>
+                  <input class="text-style--maintext distcount" type="number" name="distance" id="distance-id" value={this.state.distance} min="0" onChange={this.handleDistAndSpeedChange}/>
                   <label for="speed-id" class="text-style--maintext speed">Скорость цели (ярд/с)</label>
-                  <input class="text-style--maintext speedcount" type="number" name="speed" id="speed-id" value={this.state.speed} min="0" onChange={this.handleChange}/>
+                  <input class="text-style--maintext speedcount" type="number" name="speed" id="speed-id" value={this.state.speed} min="0" onChange={this.handleDistAndSpeedChange}/>
                   
-                  <input class="text-style--maintext input-style--doublemodifier distspeedoutput" type="text" name="distspeedoutput" id="distspeedoutput-id" value="+0" readonly />
+                  <input class="text-style--maintext input-style--doublemodifier distspeedoutput" type="text" name="distspeedoutput" id="distspeedoutput-id" value={this.state.modifierDistAndSpeed} readonly />
                 </div>
                 <div class="modifiers-box--single">
                   <label for="size-id" class="text-style--maintext">Модификатор размера цели</label>
