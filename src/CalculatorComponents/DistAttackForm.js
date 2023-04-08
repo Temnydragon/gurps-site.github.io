@@ -4,7 +4,7 @@ import HitZone from './HitZone';
 class DistAttackForm extends Component {
     constructor(props) {
         super(props)
-        this.state = { basikskill:10, distance:null, speed:null, size:null, accuracy:null, shots:null, zone:null, effectiveskill:10}
+        this.state = { basikskill:10, distance:1, speed:0, size:0, accuracy:0, shots:1, zone:0, effectiveskill:10}
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -26,19 +26,23 @@ class DistAttackForm extends Component {
         `)
     }
 
+    ComputEffectiveSkill(state) {
+      return {
+        effectiveskill: parseInt(state.basikskill) + parseInt(state.size) + parseInt(state.accuracy)
+      };
+    }
+
     handleChange(event){
         this.setState({
           // Computed property names
           // keys of the objects are computed dynamically
-          [event.target.name] : event.target.value,
-
-          effectiveskill: (parseInt(this.state.basikskill) + parseInt(this.state.speed))
+          [event.target.name] : event.target.value
         })
+
+        this.setState(this.ComputEffectiveSkill)
     }
 
     render() {
-        const FinalSkill = this.state.effectiveskill;
-
         return (
         <form className='form-block' onSubmit={this.handleSubmit}>
             <section class="main-content--box topmargin">
@@ -109,7 +113,7 @@ class DistAttackForm extends Component {
               <div>
                 <div class="skill-box" >
                     <label for="effectiveskill-id" class="text-style--maintext textblock-center">Эффективное умение персонажа</label>
-                    <input class="text-style--maintext" type="number" name="effectiveskill" id="effectiveskill-id" value={FinalSkill} readonly />
+                    <input class="text-style--maintext" type="number" name="effectiveskill" id="effectiveskill-id" value={this.state.effectiveskill} readonly />
                 </div>
                 <div class="diceroll-box">
                   <button type="submit" name="dicerollbutton" id="dicerollbutton-id" class="text-style--buttontext">Бросок успеха</button>
