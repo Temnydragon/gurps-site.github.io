@@ -44,39 +44,28 @@ class DistAttackForm extends Component {
       };
     }
 
-    ComputeDistSpeedModifier(state, props) {
+    ComputeDistSpeedModifier(state) {
+      const DistSpeedNumbers = [2, 3, 5, 7, 10, 15, 20, 30, 50, 70, 100, 150, 200, 300, 500, 700, 1000, 1500, 2000, 3000, 5000];
+      const DistanceAndSpeedValue = parseInt(state.distance) + parseInt(state.speed);
+      
+      let DistSpeedModifier = 0;
+      for (let i = 0; i < DistSpeedNumbers.length; i++) {
+        if (DistanceAndSpeedValue > DistSpeedNumbers[i]) {
+          DistSpeedModifier--;
+        }
+      }
       return {
-        modifierDistAndSpeed:  parseInt(state.modifierDistAndSpeed) + parseInt(props.modvalue)
+        modifierDistAndSpeed:  DistSpeedModifier
       };
     }
 
     handleDistAndSpeedChange(event){
-      const DistSpeedNumbers = [2, 3, 5, 7, 10, 15, 20, 30, 50, 70, 100, 150, 200, 300, 500, 700, 1000, 1500, 2000, 3000, 5000];
 
       this.setState({
         [event.target.name] : event.target.value
       })
 
-      const DistanceAndSpeedValue = parseInt(this.state.distance) + parseInt(this.state.speed);
-      /*let i = 0;
-      let DistSpeedModifier = -22;
-      while (DistanceAndSpeedValue <= DistSpeedNumbers[i] && i < DistSpeedNumbers.length) {
-        DistSpeedModifier++;
-        i++;
-      }*/
-
-      let DistSpeedModifier = 0;
-      for (let i = 0; i < DistSpeedNumbers.length-1; i++) {
-        if (DistanceAndSpeedValue >= DistSpeedNumbers[i]) {
-          DistSpeedModifier--;
-        }
-      }
-
-      this.setState({
-        modifierDistAndSpeed:  DistSpeedModifier
-      })
-      /*this.setState(this.ComputeDistSpeedModifier(modvalue = {DistSpeedModifier}))*/
-
+      this.setState(this.ComputeDistSpeedModifier)
       this.setState(this.ComputEffectiveSkill)
     }
 
