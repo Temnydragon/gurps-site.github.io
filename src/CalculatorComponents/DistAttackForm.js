@@ -4,18 +4,23 @@ import HitZone from './HitZone';
 class DistAttackForm extends Component {
     constructor(props) {
         super(props)
-        this.state = { basikskill:10, distance:1, speed:0, size:0, accuracy:0, shots:1, zone:0, effectiveskill:10, modifierDistAndSpeed:'+0', modifierSize:'+0', modifierAccuracy:'+0', modifierShots:'+0'}
+        this.state = { basikskill:10, distance:1, speed:0, size:0, accuracy:0, shots:1, zone:0, effectiveskill:10, modifierDistAndSpeed:'+0', modifierSize:'+0', modifierAccuracy:'+0', modifierShots:'+0', modifierZone:'0'}
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleDistAndSpeedChange = this.handleDistAndSpeedChange.bind(this)
         this.handleSizeChange = this.handleSizeChange.bind(this)
         this.handleAccuracyChange = this.handleAccuracyChange.bind(this)
         this.handleShotsChange = this.handleShotsChange.bind(this)
+        this.handleRadioZoneChange = this.handleRadioZoneChange.bind(this)
     }
+
+////////
+    handleRadioZoneChange = e => this.setState({ modifierZone: e.target.value });
+///////
 
     // Form submitting logic, prevent default page refresh 
     handleSubmit(event){
-        const { basikskill, distance, speed, size, accuracy, shots, effectiveskill } = this.state
+        const { basikskill, distance, speed, size, accuracy, shots, effectiveskill, modifierZone } = this.state
         event.preventDefault()
 
         alert(`
@@ -27,6 +32,7 @@ class DistAttackForm extends Component {
         Accuracy : ${accuracy}
         Shots : ${shots}
         EffectSkill : ${effectiveskill}
+        ModZone : ${modifierZone}
         `)
     }
 
@@ -126,7 +132,7 @@ class DistAttackForm extends Component {
       if(DistanceAndSpeedValue == '') {
         return {
           modifierDistAndSpeed: '+0'
-        };
+        }; 
       }
 
       let DistSpeedModifier = 0;
@@ -233,19 +239,19 @@ class DistAttackForm extends Component {
 
               <section className="gridcontainer-allhitzones">
                 <div>
-                  <HitZone zoneId={'eyeszone-id'} zoneValue={'-9'} labelText={'Глаза'} checkFlag={'false'} />
-                  <HitZone zoneId={'skullzone-id'} zoneValue={'-7'} labelText={'Череп'} checkFlag={'false'} />
-                  <HitZone zoneId={'facezone-id'} zoneValue={'-5'} labelText={'Лицо'} checkFlag={'false'} />
-                  <HitZone zoneId={'neckzone-id'} zoneValue={'-5'} labelText={'Шея'} checkFlag={'false'} />
-                  <HitZone zoneId={'torsozone-id'} zoneValue={'0'} labelText={'Торс'} checkFlag={'true'} />
-                  <HitZone zoneId={'organszone-id'} zoneValue={'-3'} labelText={'Органы'} checkFlag={'false'} />
+                  <HitZone zoneId={'eyeszone-id'} zoneValue={'-9'} labelText={'Глаза'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
+                  <HitZone zoneId={'skullzone-id'} zoneValue={'-7'} labelText={'Череп'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
+                  <HitZone zoneId={'facezone-id'} zoneValue={'-5'} labelText={'Лицо'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
+                  <HitZone zoneId={'neckzone-id'} zoneValue={'-5'} labelText={'Шея'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
+                  <HitZone zoneId={'torsozone-id'} zoneValue={'0'} labelText={'Торс'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
+                  <HitZone zoneId={'organszone-id'} zoneValue={'-3'} labelText={'Органы'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
                 </div>
                 <div>
-                  <HitZone zoneId={'armzone-id'} zoneValue={'-2'} labelText={'Рука'} checkFlag={'false'} />
-                  <HitZone zoneId={'handzone-id'} zoneValue={'-4'} labelText={'Кисть'} checkFlag={'false'} />
-                  <HitZone zoneId={'groinzone-id'} zoneValue={'-3'} labelText={'Пах'} checkFlag={'false'} />
-                  <HitZone zoneId={'legzone-id'} zoneValue={'-2'} labelText={'Нога'} checkFlag={'false'} />
-                  <HitZone zoneId={'feetzone-id'} zoneValue={'-4'} labelText={'Ступня'} checkFlag={'false'} />
+                  <HitZone zoneId={'armzone-id'} zoneValue={'-2'} labelText={'Рука'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
+                  <HitZone zoneId={'handzone-id'} zoneValue={'-4'} labelText={'Кисть'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
+                  <HitZone zoneId={'groinzone-id'} zoneValue={'-3'} labelText={'Пах'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
+                  <HitZone zoneId={'legzone-id'} zoneValue={'-2'} labelText={'Нога'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
+                  <HitZone zoneId={'feetzone-id'} zoneValue={'-4'} labelText={'Ступня'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
                 </div>
               </section>
 
