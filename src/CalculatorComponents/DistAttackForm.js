@@ -4,7 +4,7 @@ import HitZone from './HitZone';
 class DistAttackForm extends Component {
     constructor(props) {
         super(props)
-        this.state = { basikskill:10, distance:1, speed:0, size:0, accuracy:0, shots:1, zone:0, effectiveskill:10, modifierDistAndSpeed:'+0', modifierSize:'+0', modifierAccuracy:'+0', modifierShots:'+0', modifierZone:'0'}
+        this.state = { basikskill:10, distance:1, speed:0, size:0, accuracy:0, shots:1, zone:0, effectiveskill:10, modifierDistAndSpeed:'+0', modifierSize:'+0', modifierAccuracy:'+0', modifierShots:'+0', modifierZone:'0', diceRollResult:' - '}
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleDistAndSpeedChange = this.handleDistAndSpeedChange.bind(this)
@@ -14,26 +14,15 @@ class DistAttackForm extends Component {
         this.handleRadioZoneChange = this.handleRadioZoneChange.bind(this)
     }
 
-////////
-    handleRadioZoneChange = e => this.setState({ modifierZone: e.target.value });
-///////
+    handleRadioZoneChange = e => { 
+      this.setState({ modifierZone: e.target.value }) 
+      this.setState(this.ComputEffectiveSkill)
+    };
 
     // Form submitting logic, prevent default page refresh 
     handleSubmit(event){
-        const { basikskill, distance, speed, size, accuracy, shots, effectiveskill, modifierZone } = this.state
         event.preventDefault()
-
-        alert(`
-        ____Your Details____\n
-        Basikskill : ${basikskill}
-        Distance : ${distance}
-        Speed : ${speed}
-        Size : ${size}
-        Accuracy : ${accuracy}
-        Shots : ${shots}
-        EffectSkill : ${effectiveskill}
-        ModZone : ${modifierZone}
-        `)
+        this.setState(this.computeDiceRollResult)
     }
 
     
@@ -49,7 +38,7 @@ class DistAttackForm extends Component {
 
     ComputEffectiveSkill(state) {
       return {
-        effectiveskill: parseInt(state.basikskill) + parseInt(state.modifierSize) + parseInt(state.modifierAccuracy) + parseInt(state.modifierDistAndSpeed) + parseInt(state.modifierShots)
+        effectiveskill: parseInt(state.basikskill) + parseInt(state.modifierSize) + parseInt(state.modifierAccuracy) + parseInt(state.modifierDistAndSpeed) + parseInt(state.modifierShots) + parseInt(state.modifierZone)
       };
     }
 
@@ -150,6 +139,37 @@ class DistAttackForm extends Component {
       return {
         modifierDistAndSpeed:  DistSpeedModifier
       };
+    }
+
+    getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+    }
+
+    computeDiceRollResult(state) {
+      let outputValue = (this.getRandomInt(1, 7) + this.getRandomInt(1, 7) + this.getRandomInt(1, 7));
+      if(outputValue <= 4) {
+        return {
+          diceRollResult: outputValue + (' (критический успех!' + ')')
+        };
+      }
+      if(outputValue >= 17) {
+        return {
+          diceRollResult: outputValue + (' (критический провал!' + ')')
+        };
+      }
+      
+      if(state.effectiveskill - outputValue < 0) {
+        return {
+          diceRollResult: (outputValue + (' (провал на ' + (state.effectiveskill - outputValue)) + ')')
+        };
+      }
+      else {
+        return {
+          diceRollResult: (outputValue + (' (успех на ' + (state.effectiveskill - outputValue)) + ')')
+        };
+      }
     }
 
     handleDistAndSpeedChange(event){
@@ -264,7 +284,7 @@ class DistAttackForm extends Component {
                 </div>
                 <div className="diceroll-box">
                   <button type="submit" name="dicerollbutton" id="dicerollbutton-id" className="text-style--buttontext">Бросок успеха</button>
-                  <output name="dicerollresult" id="dicerollresult-id" className="text-style--maintext textblock-center"> - </output>
+                  <output name="dicerollresult" id="dicerollresult-id" className="text-style--maintext textblock-center">{this.state.diceRollResult}</output>
                 </div>
               </div>
             </section>
