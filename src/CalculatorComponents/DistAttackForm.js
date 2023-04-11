@@ -288,7 +288,7 @@ class DistAttackForm extends Component {
                 </div>
               </div>
             </section>
-          </form>
+        </form>
         )
     }
 }
