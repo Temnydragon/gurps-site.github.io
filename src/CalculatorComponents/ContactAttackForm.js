@@ -4,9 +4,10 @@ import HitZone from './HitZone';
 class ContactAttackForm extends Component {
     constructor(props) {
         super(props)
-        this.state = {modifierZone: '0', attackType: 'base-attack'}
+        this.state = {modifierZone: '0', attackType: 'base-attack', nonMainhandCheck: false}
         this.handleAttackTypeChange = this.handleAttackTypeChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handlenonMainhandCheck = this.handlenonMainhandCheck.bind(this)
     }
 
     handleSubmit(event){
@@ -25,6 +26,21 @@ class ContactAttackForm extends Component {
         this.setState(this.ComputEffectiveSkill)
     };
     
+    handlenonMainhandCheck(event) {
+        if(this.state.nonMainhandCheck === true) {
+            this.setState({nonMainhandCheck : false})
+        }
+        else {
+            this.setState({nonMainhandCheck : true})
+        }
+
+        /*const { nonMainhandCheck } = this.state
+        alert (`
+            Well : ${nonMainhandCheck}
+        `)*/
+        //this.setState({nonMainhandCheck : !event.target.checked})
+    }
+
     render() {
         return (
         <form className='form-block' onSubmit={this.handleSubmit}>
@@ -48,8 +64,41 @@ class ContactAttackForm extends Component {
                 <select className='select-css' value={this.state.attackType} onChange={this.handleAttackTypeChange}>
                     <option value="base-attack">Атака</option>
                     <option value="move-and-attack">Движение и атака</option>
-                    <option value="all-out-attack">Тотальная атака</option>
+                    <option value="all-out-attack-accurate">Тотальная атака (точная)</option>
+                    <option value="all-out-attack-double">Тотальная атака (двойная)</option>
+                    <option value="all-out-attack-strong">Тотальная атака (сильная)</option>
                 </select>
+
+                <h2 className="text-style--subtitle borderedtop-subtitle">Модификаторы атаки</h2>
+
+                <section className='gridcontainer-contactmodifiers'>
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
+                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--maintext'>
+                            Атака не основной рукой
+                        </label>
+                    </div>
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
+                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--maintext'>
+                            Серьёзный отвлекающий фактор
+                        </label>
+                    </div>
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
+                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--maintext'>
+                            Серьёзный отвлекающий фактор
+                        </label>
+                    </div>
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
+                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--maintext'>
+                            Умеренный отвлекающий фактор
+                        </label>
+                    </div>
+                </section>
+
+                <h2 className="text-style--subtitle borderedtop-subtitle">Зона попадания</h2>
 
                 <section className="gridcontainer-allhitzones">
                     <div>
@@ -69,6 +118,18 @@ class ContactAttackForm extends Component {
                     </div>
                 </section>
                 
+                <h2 className="text-style--subtitle borderedtop-subtitle" >Результат</h2>
+
+                <div>
+                    <div className="skill-box" >
+                        <label for="effectiveskill-id" className="text-style--maintext textblock-center">Эффективное умение персонажа</label>
+                        <input className="text-style--maintext" type="number" name="effectiveskill" id="effectiveskill-id" value={this.state.effectiveskill} readOnly />
+                    </div>
+                    <div className="diceroll-box">
+                        <button type="submit" name="dicerollbutton" id="dicerollbutton-id" className="text-style--buttontext">Бросок успеха</button>
+                        <output name="dicerollresult" id="dicerollresult-id" className="text-style--maintext textblock-center">{this.state.diceRollResult}</output>
+                    </div>
+                </div>
             </section>
         </form>
         )

@@ -144,6 +144,27 @@ button {
     text-align: center;
 }
 
+/* модуль контактных атак */
+
+.gridcontainer-contactmodifiers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    padding-bottom: 30px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.gridcontainer-contactmodifiers--checkbox {
+    margin: 0 auto;
+    width: 100%;
+    padding: 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /* Стили для тега select */
 
 .select-css { 
