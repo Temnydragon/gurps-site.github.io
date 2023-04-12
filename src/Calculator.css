@@ -111,7 +111,7 @@ input {
   
 .gridcontainer-hitzone {
     display: grid;
-    grid-template-columns: 26px 1fr 1fr;
+    grid-template-columns: 26px 2fr 1fr;
     column-gap: 30px;
     max-width: 313px;
     height: 36px;
@@ -148,7 +148,7 @@ button {
 
 .gridcontainer-contactmodifiers {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     column-gap: 20px;
     padding-bottom: 30px;
     width: 80%;
@@ -158,12 +158,22 @@ button {
 
 .gridcontainer-contactmodifiers--checkbox {
     margin: 0 auto;
-    width: 100%;
+    width: 60%;
     display: grid;
-    grid-template-columns: 8fr 1fr;
+    grid-template-columns: 8fr 2fr;
     align-items: center;
-    column-gap: 5px;
+    column-gap: 0px;
 }
+
+/*.gridcontainer-doubled {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    padding-bottom: 30px;
+    width: 100%;
+    margin: 0 auto;
+    row-gap: 30px;
+}*/
 
 /* Стили для тега select */
 

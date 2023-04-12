@@ -142,8 +142,23 @@
   /*font-size: 24px;*/
   font-size: 1.25vw;
   line-height: 28px;
-  text-align: right;
+  text-align: left;
   margin: 0;
   margin-block-start: 0;
   margin-block-end: 0;
+}
+
+.text-style--attackercondition {
+  font-size: 30px;
+  line-height: 43px;
+  font-weight: bold;
+  font-style: italic;
+  font-family: "Book Antiqua", serif;
+  text-align: center;
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding: 0;
+  padding-bottom: 0;
+  vertical-align: middle;
 }

@@ -59,7 +59,7 @@ class ContactAttackForm extends Component {
                     </div>
                 </div>
 
-                <h2 className="text-style--subtitle">Тип атаки</h2>
+                <h2 className="text-style--subtitle">Тип и особенности атаки</h2>
 
                 <select className='select-css' value={this.state.attackType} onChange={this.handleAttackTypeChange}>
                     <option value="base-attack">Атака</option>
@@ -69,32 +69,116 @@ class ContactAttackForm extends Component {
                     <option value="all-out-attack-strong">Тотальная атака (сильная)</option>
                 </select>
 
-                <h2 className="text-style--subtitle borderedtop-subtitle">Модификаторы атаки</h2>
+                <h2 className="text-style--attackercondition">Основные модификаторы</h2>
 
                 <section className='gridcontainer-contactmodifiers'>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
                         <label htmlFor='non-mainhand-checkbox-id' className='text-style--checkboxlabel'>
-                            Атака не основной рукой
+                            Атака не основной рукой (штраф -4)
                         </label>
                         <input type='checkbox' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
-                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--checkboxlabel'>
-                        Серьёзный отвлекающий фактор
+                        <label htmlFor='captured-checkbox-id' className='text-style--checkboxlabel'>
+                            Атакующий схвачен (штраф -4)
                         </label>
-                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
+                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='captured-checkbox' id='captured-checkbox-id' onChange={this.handlenonMainhandCheck}/>
+                    </div>
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <label htmlFor='bigshield-checkbox-id' className='text-style--checkboxlabel'>
+                            Держит большой щит (штраф -2)
+                        </label>
+                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='bigshield-checkbox' id='bigshield-checkbox-id' onChange={this.handlenonMainhandCheck}/>
+                    </div>
+
+                    <h3 className='text-style--attackercondition'>Факторы предыдущих ходов</h3>
+
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <label htmlFor='evaluate-id' className='text-style--checkboxlabel'>
+                            Оценка противника (от 0 до +3)
+                        </label>
+                        <input className="text-style--maintext" type='number' value={this.state.nonMainhandCheck} name='evaluate' id='evaluate-id' onChange={this.handlenonMainhandCheck}/>
+                    </div>
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <label htmlFor='shock-id' className='text-style--checkboxlabel'>
+                            Шок от травмы (от 0 до -4)
+                        </label>
+                        <input className="text-style--maintext" type='number' value={this.state.nonMainhandCheck} name='shock' id='shock-id' onChange={this.handlenonMainhandCheck}/>
+                    </div>
+
+                    <h3 className='text-style--attackercondition'>Поза атакующего</h3>
+
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <label htmlFor='standing-pose-id' className='text-style--checkboxlabel'>
+                        Стоя (нет штрафа)
+                        </label>
+                        <input type='radio' checked={this.state.nonMainhandCheck} name='pose' id='standing-pose-id' onChange={this.handlenonMainhandCheck}/>
+                    </div>
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <label htmlFor='sitting-pose-id' className='text-style--checkboxlabel'>
+                        На коленях, сидя или присев (-2)
+                        </label>
+                        <input type='radio' checked={this.state.nonMainhandCheck} name='pose' id='sitting-pose-id' onChange={this.handlenonMainhandCheck}/>
+                    </div>
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <label htmlFor='lying-pose-id' className='text-style--checkboxlabel'>
+                        Ползком или лёжа (-4)
+                        </label>
+                        <input type='radio' checked={this.state.nonMainhandCheck} name='pose' id='lying-pose-id' onChange={this.handlenonMainhandCheck}/>
+                    </div>
+
+                    <h3 className='text-style--attackercondition'>Внешние факторы</h3>
+
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--checkboxlabel'>
+                        Серьёзный отвлекающий фактор (-3)
+                        </label>
+                        <input type='radio' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
                         <label htmlFor='non-mainhand-checkbox-id' className='text-style--checkboxlabel'>
-                        Серьёзный отвлекающий фактор
+                        Умеренный отвлекающий фактор (-2)
                         </label>
-                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
+                        <input type='radio' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
+                    </div>
+
+                    <h3 className='text-style--attackercondition'>Внутренние факторы</h3>
+
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <label htmlFor='middle-pain-id' className='text-style--checkboxlabel'>
+                        Умеренная боль (-2)
+                        </label>
+                        <input type='radio' checked={this.state.nonMainhandCheck} name='pain' id='middle-pain-id' onChange={this.handlenonMainhandCheck}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
-                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--checkboxlabel'>
-                        Умеренный отвлекающий фактор
+                        <label htmlFor='high-pain-id' className='text-style--checkboxlabel'>
+                        Серьёзная боль (-4)
                         </label>
-                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
+                        <input type='radio' checked={this.state.nonMainhandCheck} name='pain' id='high-pain-id' onChange={this.handlenonMainhandCheck}/>
+                    </div>
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <label htmlFor='terrible-pain-id' className='text-style--checkboxlabel'>
+                        Ужасная боль (-6)
+                        </label>
+                        <input type='radio' checked={this.state.nonMainhandCheck} name='pain' id='terrible-pain-id' onChange={this.handlenonMainhandCheck}/>
+                    </div>
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <label htmlFor='nausea-id' className='text-style--checkboxlabel'>
+                        Тошнота (-2)
+                        </label>
+                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='nausea' id='nausea-id' onChange={this.handlenonMainhandCheck}/>
+                    </div>
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <label htmlFor='drunk-id' className='text-style--checkboxlabel'>
+                        Опьянение (-2)
+                        </label>
+                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='drunk' id='drunk-id' onChange={this.handlenonMainhandCheck}/>
+                    </div>
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <label htmlFor='euphoria-id' className='text-style--checkboxlabel'>
+                        Эйфория (-3)
+                        </label>
+                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='euphoria' id='euphoria-id' onChange={this.handlenonMainhandCheck}/>
                     </div>
                 </section>
 
@@ -115,6 +199,7 @@ class ContactAttackForm extends Component {
                     <HitZone zoneId={'groinzone-id'} zoneValue={'-3'} labelText={'Пах'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
                     <HitZone zoneId={'legzone-id'} zoneValue={'-2'} labelText={'Нога'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
                     <HitZone zoneId={'feetzone-id'} zoneValue={'-4'} labelText={'Ступня'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
+                    <HitZone zoneId={'armorslit-id'} zoneValue={'-8'} labelText={'Щели брони'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
                     </div>
                 </section>
                 
