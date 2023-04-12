@@ -149,20 +149,20 @@ button {
 .gridcontainer-contactmodifiers {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 10px;
+    column-gap: 20px;
     padding-bottom: 30px;
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
+    row-gap: 30px;
 }
 
 .gridcontainer-contactmodifiers--checkbox {
     margin: 0 auto;
     width: 100%;
-    padding: 20px 0;
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    justify-content: space-between;
+    grid-template-columns: 8fr 1fr;
     align-items: center;
+    column-gap: 5px;
 }
 
 /* Стили для тега select */

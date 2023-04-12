@@ -73,28 +73,28 @@ class ContactAttackForm extends Component {
 
                 <section className='gridcontainer-contactmodifiers'>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
-                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
-                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--maintext'>
+                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--checkboxlabel'>
                             Атака не основной рукой
                         </label>
+                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
-                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
-                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--maintext'>
-                            Серьёзный отвлекающий фактор
+                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--checkboxlabel'>
+                        Серьёзный отвлекающий фактор
                         </label>
+                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
-                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
-                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--maintext'>
-                            Серьёзный отвлекающий фактор
+                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--checkboxlabel'>
+                        Серьёзный отвлекающий фактор
                         </label>
+                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
-                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
-                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--maintext'>
-                            Умеренный отвлекающий фактор
+                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--checkboxlabel'>
+                        Умеренный отвлекающий фактор
                         </label>
+                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
                     </div>
                 </section>
 
