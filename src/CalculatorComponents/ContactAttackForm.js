@@ -4,10 +4,15 @@ import HitZone from './HitZone';
 class ContactAttackForm extends Component {
     constructor(props) {
         super(props)
-        this.state = {modifierZone: '0', attackType: 'base-attack', nonMainhandCheck: false}
-        this.handleAttackTypeChange = this.handleAttackTypeChange.bind(this)
+        this.state = {basikskill:10, effectiveskill:10, attackType: 'base-attack', nonMainhandCheck: false, isCapturedCheck: false, bigShieldHold: false, evaluateModifier:0, shockModifier:0, modifierZone: '0'}
+        this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handlenonMainhandCheck = this.handlenonMainhandCheck.bind(this)
+        this.handleCapture = this.handleCapture.bind(this)
+        this.handleShieldHold = this.handleShieldHold.bind(this)
+        this.handleAttackTypeChange = this.handleAttackTypeChange.bind(this)
+        this.handleEvaluate = this.handleEvaluate.bind(this)
+        this.handleShock = this.handleShock.bind(this)
     }
 
     handleSubmit(event){
@@ -15,16 +20,41 @@ class ContactAttackForm extends Component {
         //this.setState(this.computeDiceRollResult)
     }
 
+    handleChange(event){
+        this.setState({
+          [event.target.name] : event.target.value
+        })
+  
+        this.setState(this.ComputEffectiveSkill)
+    }
+  
+    ComputEffectiveSkill(state) {
+        let notMainHandValue = 0;
+        let isCapturedValue = 0;
+        let bigShieldHoldValue = 0;
+
+        if(state.nonMainhandCheck) {
+            notMainHandValue = -4;
+        }
+
+        if(state.isCapturedCheck) {
+            isCapturedValue = -4;
+        }
+
+        if(state.bigShieldHold) {
+            bigShieldHoldValue = -2;
+        }
+
+        return {
+          effectiveskill: parseInt(state.basikskill) + parseInt(state.modifierZone) + parseInt(state.evaluateModifier) + parseInt(state.shockModifier) + notMainHandValue + isCapturedValue + bigShieldHoldValue
+        };
+    }
+
     handleAttackTypeChange(event){
       this.setState({
         attackType : event.target.value
       })
     }
-
-    handleRadioZoneChange = e => { 
-        this.setState({ modifierZone: e.target.value }) 
-        this.setState(this.ComputEffectiveSkill)
-    };
     
     handlenonMainhandCheck(event) {
         if(this.state.nonMainhandCheck === true) {
@@ -34,12 +64,51 @@ class ContactAttackForm extends Component {
             this.setState({nonMainhandCheck : true})
         }
 
-        /*const { nonMainhandCheck } = this.state
-        alert (`
-            Well : ${nonMainhandCheck}
-        `)*/
-        //this.setState({nonMainhandCheck : !event.target.checked})
+        this.setState(this.ComputEffectiveSkill)
     }
+
+    handleCapture() {
+        if(this.state.isCapturedCheck === true) {
+            this.setState({isCapturedCheck : false})
+        }
+        else {
+            this.setState({isCapturedCheck : true})
+        }
+
+        this.setState(this.ComputEffectiveSkill)
+    }
+
+    handleShieldHold() {
+        if(this.state.bigShieldHold === true) {
+            this.setState({bigShieldHold : false})
+        }
+        else {
+            this.setState({bigShieldHold : true})
+        }
+
+        this.setState(this.ComputEffectiveSkill)
+    }
+
+    handleEvaluate(event) {
+        this.setState({
+            evaluateModifier : event.target.value
+        })
+        
+        this.setState(this.ComputEffectiveSkill)
+    }
+
+    handleShock(event) {
+        this.setState({
+            shockModifier : event.target.value
+        })
+        
+        this.setState(this.ComputEffectiveSkill)
+    }
+
+    handleRadioZoneChange = e => { 
+        this.setState({ modifierZone: e.target.value }) 
+        this.setState(this.ComputEffectiveSkill)
+    };
 
     render() {
         return (
@@ -82,13 +151,13 @@ class ContactAttackForm extends Component {
                         <label htmlFor='captured-checkbox-id' className='text-style--checkboxlabel'>
                             Атакующий схвачен (штраф -4)
                         </label>
-                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='captured-checkbox' id='captured-checkbox-id' onChange={this.handlenonMainhandCheck}/>
+                        <input type='checkbox' checked={this.state.isCapturedCheck} name='captured-checkbox' id='captured-checkbox-id' onChange={this.handleCapture}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
                         <label htmlFor='bigshield-checkbox-id' className='text-style--checkboxlabel'>
                             Держит большой щит (штраф -2)
                         </label>
-                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='bigshield-checkbox' id='bigshield-checkbox-id' onChange={this.handlenonMainhandCheck}/>
+                        <input type='checkbox' checked={this.state.bigShieldHold} name='bigshield-checkbox' id='bigshield-checkbox-id' onChange={this.handleShieldHold}/>
                     </div>
 
                     <h3 className='text-style--attackercondition'>Факторы предыдущих ходов</h3>
@@ -97,13 +166,24 @@ class ContactAttackForm extends Component {
                         <label htmlFor='evaluate-id' className='text-style--checkboxlabel'>
                             Оценка противника (от 0 до +3)
                         </label>
-                        <input className="text-style--maintext" type='number' value={this.state.nonMainhandCheck} name='evaluate' id='evaluate-id' onChange={this.handlenonMainhandCheck}/>
+                        <select className='smallselect' id='evaluate-id' value={this.state.evaluateModifier} onChange={this.handleEvaluate}>
+                            <option value="0">+0</option>
+                            <option value="1">+1</option>
+                            <option value="2">+2</option>
+                            <option value="3">+3</option>
+                        </select>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
                         <label htmlFor='shock-id' className='text-style--checkboxlabel'>
                             Шок от травмы (от 0 до -4)
                         </label>
-                        <input className="text-style--maintext" type='number' value={this.state.nonMainhandCheck} name='shock' id='shock-id' onChange={this.handlenonMainhandCheck}/>
+                        <select className='smallselect' id='shock-id' value={this.state.shockModifier} onChange={this.handleShock}>
+                            <option value="0">+0</option>
+                            <option value="-1">-1</option>
+                            <option value="-2">-2</option>
+                            <option value="-3">-3</option>
+                            <option value="-4">-4</option>
+                        </select>
                     </div>
 
                     <h3 className='text-style--attackercondition'>Поза атакующего</h3>
