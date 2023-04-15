@@ -37,8 +37,8 @@ class Calculator extends Component {
     return (
       <>
         <main className='page-main'>
-          <button onClick={this.handleFormTypeChange} value={'Dist'} name="changetoDistbutton" id="changetoDistbutton-id" className='text-style--buttontext'>На дист. атаки</button>
-          <button onClick={this.handleFormTypeChange} value={'Contact'} name="changetoDistbutton" id="changetoDistbutton-id" className='text-style--buttontext'>На конт. атаки</button>
+          <button onClick={this.handleFormTypeChange} value={'Dist'} name="changetoDistbutton" id="changetoDistbutton-id" className='text-style--buttontext'>Дистанционные атаки</button>
+          <button onClick={this.handleFormTypeChange} value={'Contact'} name="changetoDistbutton" id="changetoDistbutton-id" className='text-style--buttontext'>Контактные атаки</button>
           <FormType typeofform={this.state.formType} />
         </main>
 

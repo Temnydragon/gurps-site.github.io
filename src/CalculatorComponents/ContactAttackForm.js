@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HitZone from './HitZone';
+import FullAttackDescription from './AttackDescription';
 
 class ContactAttackForm extends Component {
     constructor(props) {
@@ -35,6 +36,7 @@ class ContactAttackForm extends Component {
     }
   
     ComputEffectiveSkill(state) {
+        let AttackTypeValue = 0;
         let notMainHandValue = 0;
         let isCapturedValue = 0;
         let bigShieldHoldValue = 0;
@@ -51,8 +53,14 @@ class ContactAttackForm extends Component {
             bigShieldHoldValue = -2;
         }
 
+        if(state.attackType === 'all-out-attack-accurate') {
+            AttackTypeValue = 4;
+        }
+        if(state.attackType === 'move-and-attack') {
+            AttackTypeValue = -4;
+        }
         return {
-          effectiveskill: parseInt(state.basikskill) + parseInt(state.modifierZone) + parseInt(state.evaluateModifier) + parseInt(state.shockModifier) + notMainHandValue + isCapturedValue + bigShieldHoldValue + parseInt(state.pozeModifier) + parseInt(state.distractionModifier) + parseInt(state.painModifier) + parseInt(state.nauseaModifier) + parseInt(state.drunkModifier) + parseInt(state.euphoriaModifier)
+          effectiveskill: parseInt(state.basikskill) + AttackTypeValue + parseInt(state.modifierZone) + parseInt(state.evaluateModifier) + parseInt(state.shockModifier) + notMainHandValue + isCapturedValue + bigShieldHoldValue + parseInt(state.pozeModifier) + parseInt(state.distractionModifier) + parseInt(state.painModifier) + parseInt(state.nauseaModifier) + parseInt(state.drunkModifier) + parseInt(state.euphoriaModifier)
         };
     }
 
@@ -60,6 +68,7 @@ class ContactAttackForm extends Component {
       this.setState({
         attackType : event.target.value
       })
+      this.setState(this.ComputEffectiveSkill)
     }
     
     handlenonMainhandCheck(event) {
@@ -196,10 +205,10 @@ class ContactAttackForm extends Component {
         return (
         <form className='form-block' onSubmit={this.handleSubmit}>
             <section className='main-content--box topmargin'>
-                <h1 className="text-style--title textblock-center">Калькулятор GURPS</h1>
-                <p className='text-style--maintext main-content--text bordernone textlinebreak'>
-                    {'**всплывающее окно с подсказкой по модулю Контактных атак'}
-                </p>
+            <h1 className="text-style--title textblock-center">Модуль контактных атак</h1>
+              <p className='text-style--maintext main-content--text bordernone textlinebreak textblock-center'>
+                {'Данный модуль призван помочь в расчётах контактных атак по правилам GURPS \n\nДля подробного ознакомления обратитесь к книге "Базовые правила: Кампании" \n(Глава "Бой", страница 362; Таблица боевых модификаторов, страница 547)'}
+              </p>
             </section>
 
             <section className='calculator-box'>
@@ -379,6 +388,9 @@ class ContactAttackForm extends Component {
                 
                 <h2 className="text-style--subtitle borderedtop-subtitle" >Результат</h2>
 
+                <div>
+                    <FullAttackDescription attackTypeName={this.state.attackType} />
+                </div>
                 <div>
                     <div className="skill-box" >
                         <label for="effectiveskill-id" className="text-style--maintext textblock-center">Эффективное умение персонажа</label>

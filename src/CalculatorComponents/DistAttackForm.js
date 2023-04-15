@@ -213,9 +213,9 @@ class DistAttackForm extends Component {
         return (
         <form className='form-block' onSubmit={this.handleSubmit}>
             <section className='main-content--box topmargin'>
-              <h1 className="text-style--title textblock-center">Калькулятор GURPS</h1>
-              <p className='text-style--maintext main-content--text bordernone textlinebreak'>
-                {'**всплывающее окно с подсказкой по модулю'}
+              <h1 className="text-style--title textblock-center">Модуль дистанционных атак</h1>
+              <p className='text-style--maintext main-content--text bordernone textlinebreak textblock-center'>
+                {'Данный модуль призван помочь в расчётах дистанционных атак по правилам GURPS \n\nДля подробного ознакомления обратитесь к книге "Базовые правила: Кампании" \n(Глава "Бой", страница 372)'}
               </p>
             </section>
 
