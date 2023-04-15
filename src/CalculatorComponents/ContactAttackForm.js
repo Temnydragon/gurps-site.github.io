@@ -4,7 +4,7 @@ import HitZone from './HitZone';
 class ContactAttackForm extends Component {
     constructor(props) {
         super(props)
-        this.state = {basikskill:10, effectiveskill:10, attackType: 'base-attack', nonMainhandCheck: false, isCapturedCheck: false, bigShieldHold: false, evaluateModifier:0, shockModifier:0, modifierZone: '0'}
+        this.state = {basikskill:10, effectiveskill:10, attackType: 'base-attack', nonMainhandCheck: false, isCapturedCheck: false, bigShieldHold: false, evaluateModifier:0, shockModifier:0, pozeModifier:'0', distractionModifier:'0', painModifier:'0', nauseaModifier:'0', drunkModifier:'0', euphoriaModifier:'0', modifierZone: '0'}
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handlenonMainhandCheck = this.handlenonMainhandCheck.bind(this)
@@ -13,11 +13,17 @@ class ContactAttackForm extends Component {
         this.handleAttackTypeChange = this.handleAttackTypeChange.bind(this)
         this.handleEvaluate = this.handleEvaluate.bind(this)
         this.handleShock = this.handleShock.bind(this)
+        this.handlePozeChange = this.handlePozeChange.bind(this)
+        this.handleDistractionChange = this.handleDistractionChange.bind(this)
+        this.handlePainChange = this.handlePainChange.bind(this)
+        this.handleNauseaCheckboxChange = this.handleNauseaCheckboxChange.bind(this)
+        this.handleDrunkCheckboxChange = this.handleDrunkCheckboxChange.bind(this)
+        this.handleEuphoriaCheckboxChange = this.handleEuphoriaCheckboxChange.bind(this)
     }
 
     handleSubmit(event){
         event.preventDefault()
-        //this.setState(this.computeDiceRollResult)
+        this.setState(this.computeDiceRollResult)
     }
 
     handleChange(event){
@@ -46,7 +52,7 @@ class ContactAttackForm extends Component {
         }
 
         return {
-          effectiveskill: parseInt(state.basikskill) + parseInt(state.modifierZone) + parseInt(state.evaluateModifier) + parseInt(state.shockModifier) + notMainHandValue + isCapturedValue + bigShieldHoldValue
+          effectiveskill: parseInt(state.basikskill) + parseInt(state.modifierZone) + parseInt(state.evaluateModifier) + parseInt(state.shockModifier) + notMainHandValue + isCapturedValue + bigShieldHoldValue + parseInt(state.pozeModifier) + parseInt(state.distractionModifier) + parseInt(state.painModifier) + parseInt(state.nauseaModifier) + parseInt(state.drunkModifier) + parseInt(state.euphoriaModifier)
         };
     }
 
@@ -105,10 +111,86 @@ class ContactAttackForm extends Component {
         this.setState(this.ComputEffectiveSkill)
     }
 
+    handlePozeChange(event) {
+        this.setState({ pozeModifier : event.target.value })
+        this.setState(this.ComputEffectiveSkill)
+    }
+
+    handleDistractionChange(event) {
+        this.setState({ distractionModifier : event.target.value })
+        this.setState(this.ComputEffectiveSkill)
+    }
+
+    handlePainChange(event) {
+        this.setState({ painModifier : event.target.value })
+        this.setState(this.ComputEffectiveSkill)
+    }
+
+    handleNauseaCheckboxChange(event) {
+        if(this.state.nauseaModifier === '0') {
+            this.setState({ nauseaModifier : event.target.value })
+        }
+        else {
+            this.setState({ nauseaModifier : '0' })
+        }
+        this.setState(this.ComputEffectiveSkill)
+    }
+
+    handleDrunkCheckboxChange(event) {
+        if(this.state.drunkModifier === '0') {
+            this.setState({ drunkModifier : event.target.value })
+        }
+        else {
+            this.setState({ drunkModifier : '0' })
+        }
+        this.setState(this.ComputEffectiveSkill)
+    }
+
+    handleEuphoriaCheckboxChange(event) {
+        if(this.state.euphoriaModifier === '0') {
+            this.setState({ euphoriaModifier : event.target.value })
+        }
+        else {
+            this.setState({euphoriaModifier : '0' })
+        }
+        this.setState(this.ComputEffectiveSkill)
+    }
+
     handleRadioZoneChange = e => { 
         this.setState({ modifierZone: e.target.value }) 
         this.setState(this.ComputEffectiveSkill)
-    };
+    }
+
+    getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+    }
+
+    computeDiceRollResult(state) {
+        let outputValue = (this.getRandomInt(1, 7) + this.getRandomInt(1, 7) + this.getRandomInt(1, 7));
+        if(outputValue <= 4) {
+          return {
+            diceRollResult: outputValue + (' (критический успех!' + ')')
+          };
+        }
+        if(outputValue >= 17) {
+          return {
+            diceRollResult: outputValue + (' (критический провал!' + ')')
+          };
+        }
+        
+        if(state.effectiveskill - outputValue < 0) {
+          return {
+            diceRollResult: (outputValue + (' (провал на ' + (state.effectiveskill - outputValue)) + ')')
+          };
+        }
+        else {
+          return {
+            diceRollResult: (outputValue + (' (успех на ' + (state.effectiveskill - outputValue)) + ')')
+          };
+        }
+    }
 
     render() {
         return (
@@ -192,73 +274,85 @@ class ContactAttackForm extends Component {
                         <label htmlFor='standing-pose-id' className='text-style--checkboxlabel'>
                         Стоя (нет штрафа)
                         </label>
-                        <input type='radio' checked={this.state.nonMainhandCheck} name='pose' id='standing-pose-id' onChange={this.handlenonMainhandCheck}/>
+                        <input type='radio' value='0' name='pose' id='standing-pose-id' checked={this.state.pozeModifier == '0' ? true : false} onChange={this.handlePozeChange}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
                         <label htmlFor='sitting-pose-id' className='text-style--checkboxlabel'>
                         На коленях, сидя или присев (-2)
                         </label>
-                        <input type='radio' checked={this.state.nonMainhandCheck} name='pose' id='sitting-pose-id' onChange={this.handlenonMainhandCheck}/>
+                        <input type='radio' value='-2' name='pose' id='sitting-pose-id' checked={this.state.pozeModifier == '-2' ? true : false} onChange={this.handlePozeChange}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
                         <label htmlFor='lying-pose-id' className='text-style--checkboxlabel'>
                         Ползком или лёжа (-4)
                         </label>
-                        <input type='radio' checked={this.state.nonMainhandCheck} name='pose' id='lying-pose-id' onChange={this.handlenonMainhandCheck}/>
+                        <input type='radio' value='-4' name='pose' id='lying-pose-id' checked={this.state.pozeModifier == '-4' ? true : false} onChange={this.handlePozeChange}/>
                     </div>
 
                     <h3 className='text-style--attackercondition'>Внешние факторы</h3>
-
+                    
                     <div className='gridcontainer-contactmodifiers--checkbox'>
-                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--checkboxlabel'>
-                        Серьёзный отвлекающий фактор (-3)
+                        <label htmlFor='no-distraction-id' className='text-style--checkboxlabel'>
+                        Нет отвлекающих факторов (+0)
                         </label>
-                        <input type='radio' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
+                        <input type='radio' value='0' name='no-distraction' id='no-distraction-id' checked={this.state.distractionModifier == '0' ? true : false} onChange={this.handleDistractionChange}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
-                        <label htmlFor='non-mainhand-checkbox-id' className='text-style--checkboxlabel'>
+                        <label htmlFor='medium-distraction-id' className='text-style--checkboxlabel'>
                         Умеренный отвлекающий фактор (-2)
                         </label>
-                        <input type='radio' checked={this.state.nonMainhandCheck} name='non-mainhand-checkbox' id='non-mainhand-checkbox-id' onChange={this.handlenonMainhandCheck}/>
+                        <input type='radio' value='-2' name='medium-distraction' id='medium-distraction-id' checked={this.state.distractionModifier == '-2' ? true : false} onChange={this.handleDistractionChange}/>
+                    </div>
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <label htmlFor='high-distraction-id' className='text-style--checkboxlabel'>
+                        Серьёзный отвлекающий фактор (-3)
+                        </label>
+                        <input type='radio' value='-3' name='high-distraction' id='high-distraction-id' checked={this.state.distractionModifier == '-3' ? true : false} onChange={this.handleDistractionChange}/>
                     </div>
 
                     <h3 className='text-style--attackercondition'>Внутренние факторы</h3>
 
                     <div className='gridcontainer-contactmodifiers--checkbox'>
+                        <label htmlFor='no-pain-id' className='text-style--checkboxlabel'>
+                        Нет постоянной боли (+0)
+                        </label>
+                        <input type='radio' name='pain' id='no-pain-id' value='0' checked={this.state.painModifier == '0' ? true : false} onChange={this.handlePainChange}/>
+                    </div>
+                    <div className='gridcontainer-contactmodifiers--checkbox'>
                         <label htmlFor='middle-pain-id' className='text-style--checkboxlabel'>
                         Умеренная боль (-2)
                         </label>
-                        <input type='radio' checked={this.state.nonMainhandCheck} name='pain' id='middle-pain-id' onChange={this.handlenonMainhandCheck}/>
+                        <input type='radio' name='pain' id='middle-pain-id' value='-2' checked={this.state.painModifier == '-2' ? true : false} onChange={this.handlePainChange}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
                         <label htmlFor='high-pain-id' className='text-style--checkboxlabel'>
                         Серьёзная боль (-4)
                         </label>
-                        <input type='radio' checked={this.state.nonMainhandCheck} name='pain' id='high-pain-id' onChange={this.handlenonMainhandCheck}/>
+                        <input type='radio' name='pain' id='high-pain-id' value='-4' checked={this.state.painModifier == '-4' ? true : false} onChange={this.handlePainChange}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
                         <label htmlFor='terrible-pain-id' className='text-style--checkboxlabel'>
                         Ужасная боль (-6)
                         </label>
-                        <input type='radio' checked={this.state.nonMainhandCheck} name='pain' id='terrible-pain-id' onChange={this.handlenonMainhandCheck}/>
+                        <input type='radio' name='pain' id='terrible-pain-id' value='-6' checked={this.state.painModifier == '-6' ? true : false} onChange={this.handlePainChange}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
                         <label htmlFor='nausea-id' className='text-style--checkboxlabel'>
                         Тошнота (-2)
                         </label>
-                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='nausea' id='nausea-id' onChange={this.handlenonMainhandCheck}/>
+                        <input type='checkbox' value='-2' name='nausea' id='nausea-id' checked={this.state.nauseaModifier == '-2' ? true : false} onChange={this.handleNauseaCheckboxChange}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
                         <label htmlFor='drunk-id' className='text-style--checkboxlabel'>
                         Опьянение (-2)
                         </label>
-                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='drunk' id='drunk-id' onChange={this.handlenonMainhandCheck}/>
+                        <input type='checkbox' value='-2' name='drunk' id='drunk-id' checked={this.state.drunkModifier == '-2' ? true : false} onChange={this.handleDrunkCheckboxChange}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
                         <label htmlFor='euphoria-id' className='text-style--checkboxlabel'>
                         Эйфория (-3)
                         </label>
-                        <input type='checkbox' checked={this.state.nonMainhandCheck} name='euphoria' id='euphoria-id' onChange={this.handlenonMainhandCheck}/>
+                        <input type='checkbox' value='-3' name='euphoria' id='euphoria-id' checked={this.state.euphoriaModifier == '-3' ? true : false} onChange={this.handleEuphoriaCheckboxChange}/>
                     </div>
                 </section>
 
