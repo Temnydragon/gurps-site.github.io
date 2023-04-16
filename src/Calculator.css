@@ -144,6 +144,10 @@ button {
     padding: 0;
 }
 
+.module-button {
+    min-height: 100%;
+}
+
 .calculator-box > h2 {
     text-align: center;
     text-shadow: none;
@@ -250,4 +254,14 @@ button {
 .smallselect {
     font-size: 120%;
     width: 100%;
+}
+
+@media screen and (max-width: 1370px) {
+    .calculator-box {
+        margin-left: 8vw;
+        margin-right: 8vw;
+        border-radius: 20px;
+        background-color: #E0E0E0;
+        border: 2px solid #000000;
+    }    
 }

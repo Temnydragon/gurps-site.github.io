@@ -17,6 +17,7 @@ class App extends Component {
     <>
       <Header />
       <Routes>
+        <Route path='/gurps-site.github.io' element={<MainPage />} />
         <Route exact path='/' element={<MainPage />} />
         <Route path='/Gameplay' element={<Gameplay />} />
         <Route path='/Mechanics' element={<Mechanics />} />

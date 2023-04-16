@@ -18,7 +18,7 @@ function Mechanics () {
             </section>
 
             <section className="flexcontainer--imageandpoints">
-                <img src={CharacterSheet} className="image-style--imagenearpoints" alt="Лист персонажа" title=""></img>
+                <img src={CharacterSheet} className="image-style--imagenearpointslist" alt="Лист персонажа" title=""></img>
                 <div className='gridcontainer--points'>
                     <div>
                         <h2 className="text-style--subtitle">Сила (СЛ)</h2>
@@ -80,7 +80,7 @@ function Mechanics () {
                         </p>
                     </div>
                 </div>
-                <img src={BookAndDices} className="image-style--imagenearpoints" alt="Книга персонажей и кубики" title=""></img>
+                <img src={BookAndDices} className="image-style--imagenearpointsbook" alt="Книга персонажей и кубики" title=""></img>
             </section>
 
             <section className="main-content--box">

@@ -23,7 +23,7 @@ function MainPage () {
                 </section>
 
                 <section className="flexcontainer--imageandtext">
-                    <img src={BasikSetImage} className='image-style--imageinblock' alt='basiksetimage' title=""></img>
+                    <img src={BasikSetImage} className='image-style--imageinblockbook' alt='basiksetimage' title=""></img>
                     <div className='rightimgtextblock'>
                         <h2 className="text-style--subtitle">Как в это играют?</h2>
                         <p className='text-style--maintext textlinebreak'>

@@ -18,7 +18,7 @@ function Gameplay () {
           </section>
 
           <section className="flexcontainer--imageandpoints">
-            <img src={Imagination} className="image-style--imagenearpoints" alt="imagination" title=""></img>
+            <img src={Imagination} className="image-style--imagenearpointsfantasy" alt="imagination" title=""></img>
             <div className='gridcontainer--points'>
               <div>
                 <h2 className="text-style--subtitle">1. Повествования мастера</h2>
@@ -51,7 +51,7 @@ function Gameplay () {
                 {'Иногда решить поставленную перед игроками задачу легко. Если искатель приключений хочет пройти через комнату и открыть дверь, мастер может просто сказать, что дверь открывается, и описать, что находится за ней. Но дверь может быть заперта, пол может скрывать смертельную ловушку, или какие-то другие обстоятельства могут затруднить авантюристу выполнение задания. \n\nВ этих случаях мастер может потребовать от игрока бросить кубики для того, чтобы узнать, насколько успешно его персонаж справился с конкретной задачей.'}
               </p>
             </div>
-            <img src={ThreeDices} className="image-style--imageinblock" alt="3d6"></img>
+            <img src={ThreeDices} className="image-style--imageinblockdices" alt="3d6"></img>
           </section>
           <section className='main-content--box'>
             <p className="text-style--maintext leftimgtextblock bottompad">
