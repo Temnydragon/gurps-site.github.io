@@ -43,7 +43,7 @@ class DistAttackForm extends Component {
     }
 
     ComputSizeModifier (state) {
-      if((state.size) == '') {
+      if((state.size) === '') {
         return {
           modifierSize : '+0'
         };
@@ -59,7 +59,7 @@ class DistAttackForm extends Component {
     }
 
     ComputAccuracyModifier (state) {
-      if((state.accuracy) == '') {
+      if((state.accuracy) === '') {
         return {
           modifierAccuracy : '+0'
         };
@@ -77,7 +77,7 @@ class DistAttackForm extends Component {
     ComputShotsModifier (state) {
       let shotsModifierValue = '';
 
-      if((state.shots) == '' || parseInt((state.shots)) <= 0) {
+      if((state.shots) === '' || parseInt((state.shots)) <= 0) {
         return {
           modifierShots : '+0'
         };
@@ -110,15 +110,15 @@ class DistAttackForm extends Component {
       const DistSpeedNumbers = [2, 3, 5, 7, 10, 15, 20, 30, 50, 70, 100, 150, 200, 300, 500, 700, 1000, 1500, 2000, 3000, 5000];
       let DistanceAndSpeedValue = parseInt(state.distance) + parseInt(state.speed);
 
-      if((state.distance) == '') {
+      if((state.distance) === '') {
         DistanceAndSpeedValue =  parseInt(state.speed)
       }
 
-      if((state.speed) == '') {
+      if((state.speed) === '') {
         DistanceAndSpeedValue =  parseInt(state.distance)
       }
 
-      if(DistanceAndSpeedValue == '') {
+      if(DistanceAndSpeedValue === '') {
         return {
           modifierDistAndSpeed: '+0'
         }; 
@@ -131,7 +131,7 @@ class DistAttackForm extends Component {
         }
       }
       
-      if(DistSpeedModifier == 0) {
+      if(DistSpeedModifier === 0) {
         return {
           modifierDistAndSpeed: '+0'
         }
@@ -148,6 +148,12 @@ class DistAttackForm extends Component {
     }
 
     computeDiceRollResult(state) {
+      if(state.effectiveskill < 3) {
+        return {
+            diceRollResult: 'К сожалению, вам не удастся выполнить данную атаку из-за слишком низкого эффективного умения!'
+          };
+      }
+
       let outputValue = (this.getRandomInt(1, 7) + this.getRandomInt(1, 7) + this.getRandomInt(1, 7));
       if(outputValue <= 4) {
         return {
@@ -212,7 +218,7 @@ class DistAttackForm extends Component {
     render() {
         return (
         <form className='form-block' onSubmit={this.handleSubmit}>
-            <section className='main-content--box topmargin'>
+            <section className='main-content--box'>
               <h1 className="text-style--title textblock-center">Модуль дистанционных атак</h1>
               <p className='text-style--maintext main-content--text bordernone textlinebreak textblock-center'>
                 {'Данный модуль призван помочь в расчётах дистанционных атак по правилам GURPS \n\nДля подробного ознакомления обратитесь к книге "Базовые правила: Кампании" \n(Глава "Бой", страница 372)'}
@@ -222,7 +228,7 @@ class DistAttackForm extends Component {
             <section className='calculator-box'>
               <div className='borderedbottom-block'>
                 <div className="skill-box">
-                  <label for="basikskill-id" className="text-style--maintext textblock-center">Базовое умение персонажа</label>
+                  <label htmlFor="basikskill-id" className="text-style--maintext textblock-center">Базовое умение персонажа</label>
                   <input className="text-style--maintext" type="number" name="basikskill" id="basikskill-id" value={this.state.basikskill} onChange={this.handleChange}/>
                 </div>
               </div>
@@ -231,25 +237,25 @@ class DistAttackForm extends Component {
 
               <div className='borderedbottom-block'>
                 <div className="modifiers-box--double">
-                  <label for="distance-id" className="text-style--maintext distance">Расстояние до цели (в ярдах)</label>
+                  <label htmlFor="distance-id" className="text-style--maintext distance">Расстояние до цели (в ярдах)</label>
                   <input className="text-style--maintext distcount" type="number" name="distance" id="distance-id" value={this.state.distance} min="0" onChange={this.handleDistAndSpeedChange}/>
-                  <label for="speed-id" className="text-style--maintext speed">Скорость цели (ярд/с)</label>
+                  <label htmlFor="speed-id" className="text-style--maintext speed">Скорость цели (ярд/с)</label>
                   <input className="text-style--maintext speedcount" type="number" name="speed" id="speed-id" value={this.state.speed} min="0" onChange={this.handleDistAndSpeedChange}/>
                   
                   <input className="text-style--maintext input-style--doublemodifier distspeedoutput" type="text" name="distspeedoutput" id="distspeedoutput-id" value={this.state.modifierDistAndSpeed} readOnly />
                 </div>
                 <div className="modifiers-box--single">
-                  <label for="size-id" className="text-style--maintext">Модификатор размера цели</label>
+                  <label htmlFor="size-id" className="text-style--maintext">Модификатор размера цели</label>
                   <input className="text-style--maintext" type="number" name="size" id="size-id" value={this.state.size} onChange={this.handleSizeChange}/>
                   <input className="text-style--maintext input-style--singlemodifier" type="text" name="sizeoutput" id="sizeoutput-id" value={this.state.modifierSize} readOnly />
                 </div>
                 <div className="modifiers-box--single">
-                  <label for="accuracy-id" className="text-style--maintext">Точность оружия</label>
+                  <label htmlFor="accuracy-id" className="text-style--maintext">Точность оружия</label>
                   <input className="text-style--maintext" type="number" name="accuracy" id="accuracy-id" value={this.state.accuracy} min="0" onChange={this.handleAccuracyChange}/>
                   <input className="text-style--maintext input-style--singlemodifier" type="text" name="accuracyoutput" id="accuracyoutput-id" value={this.state.modifierAccuracy} readOnly />
                 </div>
                 <div className="modifiers-box--single">
-                  <label for="shots-id" className="text-style--maintext">Количество выстрелов</label>
+                  <label htmlFor="shots-id" className="text-style--maintext">Количество выстрелов</label>
                   <input className="text-style--maintext" type="number" name="shots" id="shots-id" value={this.state.shots} min="1" onChange={this.handleShotsChange}/>
                   <input className="text-style--maintext input-style--singlemodifier" type="text" name="shotsoutput" id="shotsoutput-id" value={this.state.modifierShots} readOnly />
                 </div>
@@ -279,7 +285,7 @@ class DistAttackForm extends Component {
 
               <div>
                 <div className="skill-box" >
-                    <label for="effectiveskill-id" className="text-style--maintext textblock-center">Эффективное умение персонажа</label>
+                    <label htmlFor="effectiveskill-id" className="text-style--maintext textblock-center">Эффективное умение персонажа</label>
                     <input className="text-style--maintext" type="number" name="effectiveskill" id="effectiveskill-id" value={this.state.effectiveskill} readOnly />
                 </div>
                 <div className="diceroll-box">

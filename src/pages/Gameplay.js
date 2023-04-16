@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Annotation from '../Annotation';
 import ReverseTavern from '../boardgame.png';
 import Imagination from '../imagination.jpg'
 import ThreeDices from '../dice_3d6.png';
 import D20 from '../d20_dice.png'
-import TextP from '../TextP';
 
 function Gameplay () {
     return (
@@ -13,7 +12,7 @@ function Gameplay () {
           <Annotation hText='Игровой процесс' description='Как это происходит?' 
             altText='Игра за столом' TitleText='Рекурсия от мира НРИ' image={ReverseTavern}/>
 
-          <section class="main-content--box">
+          <section className="main-content--box">
             <h1 className="text-style--title">Общий принцип игры</h1>
             <p className='text-style--maintext main-content--text bordernone textlinebreak'>{'Процесс игры можно разделить на несколько основных повторяющихся этапов:'}</p>
           </section>

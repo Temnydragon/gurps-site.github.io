@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import DistAttackForm from '../CalculatorComponents/DistAttackForm';
 import ContactAttackForm from '../CalculatorComponents/ContactAttackForm';
+import ThrowingForm from '../CalculatorComponents/ThrowingForm';
 
 function FormType(props) {
-  if(props.typeofform == 'Dist') {
+  if(props.typeofform === 'Dist') {
     return (
       <DistAttackForm />
     )
   }
 
-  if(props.typeofform == 'Contact') {
+  if(props.typeofform === 'Contact') {
     return (
       <ContactAttackForm />
+    )
+  }
+
+  if(props.typeofform === 'Throwing') {
+    return (
+      <ThrowingForm />
     )
   }
 }
@@ -37,8 +44,11 @@ class Calculator extends Component {
     return (
       <>
         <main className='page-main'>
-          <button onClick={this.handleFormTypeChange} value={'Dist'} name="changetoDistbutton" id="changetoDistbutton-id" className='text-style--buttontext'>Дистанционные атаки</button>
-          <button onClick={this.handleFormTypeChange} value={'Contact'} name="changetoDistbutton" id="changetoDistbutton-id" className='text-style--buttontext'>Контактные атаки</button>
+          <div className='gridcontainer-modulebuttons'>
+            <button onClick={this.handleFormTypeChange} value={'Dist'} name="changetoDistbutton" id="changetoDistbutton-id" className='text-style--buttontext'>Дистанционные атаки</button>
+            <button onClick={this.handleFormTypeChange} value={'Contact'} name="changetoContactbutton" id="changetoContactbutton-id" className='text-style--buttontext'>Контактные атаки</button>
+            <button onClick={this.handleFormTypeChange} value={'Throwing'} name="changetoThrowingbutton" id="changetoThrowingbutton-id" className='text-style--buttontext'>Метание предметов</button>
+          </div>
           <FormType typeofform={this.state.formType} />
         </main>
 

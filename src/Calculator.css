@@ -29,6 +29,16 @@
     
     justify-content: center;
 }
+
+.throwingdistance-box {
+    margin: 0 auto;
+    width: 40%;
+    padding-bottom: 30px;
+}
+
+.throwingdistance-box--result {
+    padding-top: 30px;
+}
   
 .modifiers-box--double {
     margin: 0 auto;
@@ -117,6 +127,17 @@ input {
     height: 36px;
     align-items: center;
     padding-bottom: 10px;
+}
+
+.gridcontainer-modulebuttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 10px;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 50%;
+    margin: 0 auto;
 }
   
 button {

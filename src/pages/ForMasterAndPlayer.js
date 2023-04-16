@@ -4,7 +4,7 @@ const ForMasterAndPlayer = () => {
   return (
     <>
       <main>
-        <section class="main-content--box topmargin">
+        <section className="main-content--box topmargin">
           <h1 className="text-style--title">Советы по игре</h1>
           <p className='text-style--maintext main-content--text bordernone textlinebreak'>
             {'В данном разделе представлены советы игрокам и мастерам, которые уже имеют хотя бы минимальный опыт игры. Если вы только начинаете своё знакомство с GURPS,  сначала ознакомьтесь с информацией из раздела “С чего начать?”.'}

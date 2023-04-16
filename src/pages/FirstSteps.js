@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import MainContent from '../Annotation';
+import React from 'react';
 
 function FirstSteps () {
     return (
       <>
         <main className='page-main'>
-          <section class="main-content--box topmargin">
+          <section className="main-content--box topmargin">
             <h1 className="text-style--title">Как начать играть в GURPS?</h1>
             <p className='text-style--maintext main-content--text bordernone textlinebreak'>
               {'Если вы ознокомились с информацией на данном сайте и хотите начать играть в GURPS, вам необходимо немного подготовиться:'}
@@ -33,7 +32,7 @@ function FirstSteps () {
               </p>
           </section>
 
-          <section class="main-content--box">
+          <section className="main-content--box">
             <p className='text-style--maintext bordernone textlinebreak'>
               {'Когда вы сделаете всё вышеописанное, можете спокойно начинать свои приключения по мирам, созданным другими любителями GURPS. Если же вам захочется большего, вы всегда можете обратиться к многообразию книг на '}
               <a className='linkstyle--textlink' href="https://www.sjgames.com/gurps/">официальном сайте системы</a>
