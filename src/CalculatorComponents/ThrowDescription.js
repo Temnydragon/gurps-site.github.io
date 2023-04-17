@@ -5,7 +5,7 @@ function ThrowDescription(props) {
     if(props.weight > 8*basiclift) {
         return (
             <div className='throwingdistance-box--result'>
-                <p className='text-style--maintext textblock-center'>{'Вы не моете метнуть предмет так как он слишком тяжёл для вас!'}</p>
+                <p className='text-style--maintext textblock-center'>{'Вы не можете метнуть предмет так как он слишком тяжёл для вас!'}</p>
             </div>
         );
     }
@@ -16,16 +16,6 @@ function ThrowDescription(props) {
             </div>
         );
     }
-    
-    /*let basiclift = (parseInt(props.strength)*parseInt(props.strength))/5;
-    let weightratio = props.weight/basiclift
-
-    return (
-        <div>
-            <p>{basiclift}</p>
-            <p>{weightratio}</p>
-        </div>
-    );*/
 }
 
 export default ThrowDescription;
