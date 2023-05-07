@@ -1,4 +1,105 @@
+.form-block {
+    position: relative;
+}
+
+.question-button {
+    position: absolute;
+    right: 10px;
+    top: 0.5vw;
+    width: 2.5vw;
+    border-radius: 1.5vw;
+    border: 3px solid rgb(76, 161, 230) ;
+    background: none;
+    cursor: pointer;
+    
+    font-family: "Book Antiqua", serif;
+    font-weight: bold;
+    font-size: 1.5vw;
+    text-align: center;
+    margin: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    color: rgb(76, 161, 230);
+}
+
+.question-button:hover {
+    border: 3px dashed rgb(6, 122, 216) ;
+    color: rgb(6, 122, 216);
+    /*text-shadow: rgba(0, 0, 0, 0.25) 0px 4px 3.5px;*/
+}
+
+.question-button:active {
+    border: 3px groove rgb(14, 96, 163) ;
+    color: rgb(14, 96, 163);
+}
+
+/*стили модального окна-подсказки для страниц калькулятора*/
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    opacity: 0; /* по умолчанию модальное окно прозрачно */
+    -webkit-transition: opacity 0.2s ease-in; 
+    -moz-transition: opacity 0.2s ease-in;
+    transition: opacity 0.2s ease-in; /* анимация перехода */
+    pointer-events: none; /* окно невидимо для событий мыши */
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+}
+
+.modal:target {
+    opacity: 1; /* делаем модальное окно видимым убирая прозрачность */
+	pointer-events: auto; /* делаем окно видимым для событий мыши */
+    overflow-y: auto; /* устанавливаем прокрутку по y, для случая, когда не помещается весь на страницу */
+}
+
+/* свойства ширины и отступов для самоко окна*/
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 5px;
+    margin-top: 30px;
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .3rem;
+}
+
+.modal-header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+}
+
+.modal-maintext {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 15px;
+    overflow: auto;
+}
+
 .calculator-box {
+    position: relative;
     margin-left: 20vw;
     margin-right: 20vw;
     border-radius: 20px;
@@ -190,16 +291,6 @@ button {
     column-gap: 0px;
 }
 
-/*.gridcontainer-doubled {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 10px;
-    padding-bottom: 30px;
-    width: 100%;
-    margin: 0 auto;
-    row-gap: 30px;
-}*/
-
 /* Стили для основного тега select */
 
 .select-css { 
@@ -263,5 +354,32 @@ button {
         border-radius: 20px;
         background-color: #E0E0E0;
         border: 2px solid #000000;
-    }    
+    }
+
+    .question-button {
+        position: absolute;
+        right: 20px;
+        top: 2vw;
+        width: 3vw;
+        border-radius: 2vw;
+        border: 3px solid rgb(76, 161, 230) ;
+        background: none;
+        
+        font-family: "Book Antiqua", serif;
+        font-weight: bold;
+        font-size: 2vw;
+        text-align: center;
+        margin: 0;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        color: rgb(76, 161, 230);
+    }
 }
+
+/*Стиль для центрирования и контроля размера основной части модального окна с подсказкой */
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 50%;
+        margin: 30px auto;
+    }
+  }

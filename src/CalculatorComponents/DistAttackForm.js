@@ -218,6 +218,31 @@ class DistAttackForm extends Component {
     render() {
         return (
         <form className='form-block' onSubmit={this.handleSubmit}>
+            <div id="openModal" className='modal'>
+              <div className='modal-dialog'>
+                <div className='modal-content'>
+                  <div className='modal-header'>
+                    <h2 className='text-style--maintext'>Модуль дистанционных атак</h2>
+                    <a href="#closeModal" title="Close" className='text-style--closebutton'>×</a>
+                  </div>
+                  <div className='modal-maintext'>
+                    <p className='text-style--maintext bordernone textlinebreak'>
+                      {'Данный модуль ускоряет ряд расчётов дистанционных атак. \n\nВ поле "Базовое умение персонажа" следует вводить число, равное уровню умения персонажа во владении конкретным дистанционным оружием.'}
+                    </p>
+                    <p className='text-style--maintext bordernone textlinebreak'>
+                      {'\nПоля ввода "Расстояние до цели" и "Скорость цели" используются для расчёта единого модификатора за скорость и расстояние согласно правилам и таблице на странице 550 в базовой книге правил. (Найти перевод книги можно '}
+                      <a  className="linkstyle--textlink" href="https://www.rulit.me/data/programs/resources/pdf/StivDzhekson_GURPS-4E-BasicSet(polnyyperevod)_RuLit_Me_389900.pdf">здесь</a>
+                      {')'}
+                    </p>
+                    <p className='text-style--maintext bordernone textlinebreak'>
+                      {'\nУ любого дистанционного оружия (будь то простой арбалет или миниган) есть показатель "Точности". Это премия, которую ваш персонаж получает, если один или более раз использует манёвр "Прицеливание" перед атакой. \nЕсли вы целитесь больше одной секунды или используете дополнительные возможности (например, сошки для винтовки), то вы можете получить большую премию.'}
+                      {'\nПодробности о манёвре "Прицеливание" можно узнать на странице 364 в базовой книге.'}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <section className='main-content--box'>
               <h1 className="text-style--title textblock-center">Модуль дистанционных атак</h1>
               <p className='text-style--maintext main-content--text bordernone textlinebreak textblock-center'>
@@ -226,6 +251,8 @@ class DistAttackForm extends Component {
             </section>
 
             <section className='calculator-box'>
+              <a href='#openModal' className='question-button'>?</a>
+              
               <div className='borderedbottom-block'>
                 <div className="skill-box">
                   <label htmlFor="basikskill-id" className="text-style--maintext textblock-center">Базовое умение персонажа</label>
@@ -233,7 +260,7 @@ class DistAttackForm extends Component {
                 </div>
               </div>
 
-              <h2 className="text-style--subtitle">Модификаторы</h2>
+              <h2 className='text-style--subtitle'>Модификаторы</h2>
 
               <div className='borderedbottom-block'>
                 <div className="modifiers-box--double">
