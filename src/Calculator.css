@@ -98,6 +98,11 @@
     overflow: auto;
 }
 
+.modal-maintext>h3 {
+    padding: 10px;
+    padding-top: 20px;
+}
+
 .calculator-box {
     position: relative;
     margin-left: 20vw;
