@@ -26,11 +26,18 @@ class DistAttackForm extends Component {
     }
 
     
-    handleBasicSkillChange(event){ 
-      this.setState({
-        /*Проверка для устранения отрицательных значений*/
-        [event.target.name] : (event.target.value === '' ? '' : (Math.abs(event.target.value) >= 0 ? Math.abs(event.target.value) : 0))
-      })
+    handleBasicSkillChange(event){
+      if(event.target.value > 100) {
+        this.setState({
+          [event.target.name] : 100
+        })
+      }
+      else {
+        this.setState({
+          /*Проверка для устранения отрицательных значений*/
+          [event.target.name] : (event.target.value === '' ? '' : (Math.abs(event.target.value) >= 0 ? Math.abs(event.target.value) : 0))
+        })
+      }
 
       this.setState(this.ComputEffectiveSkill)
     }
@@ -97,7 +104,7 @@ class DistAttackForm extends Component {
           shotsModifierValue = '+6'
         }
         if(parseInt(state.shots) >= 100) {
-          shotsModifierValue = '+7'
+          shotsModifierValue = '+' + (Math.floor(parseInt(state.shots)/100) + 6)
         }
       }
       return {
@@ -106,7 +113,7 @@ class DistAttackForm extends Component {
     }
 
     ComputeDistSpeedModifier(state) {
-      const DistSpeedNumbers = [2, 3, 5, 7, 10, 15, 20, 30, 50, 70, 100, 150, 200, 300, 500, 700, 1000, 1500, 2000, 3000, 5000];
+      const DistSpeedNumbers = [2, 3, 5, 7, 10, 15, 20, 30, 50, 70, 100, 150, 200, 300, 500, 700, 1000, 1500, 2000, 3000, 5000, 7000, 10000, 15000, 20000, 30000, 50000, 70000, 100000, 150000, 200000];
       let DistanceAndSpeedValue = parseInt(state.distance) + parseInt(state.speed);
 
       if((state.distance) === '') {
@@ -178,36 +185,66 @@ class DistAttackForm extends Component {
     }
 
     handleDistAndSpeedChange(event){
-      this.setState({
-        [event.target.name] : (event.target.value === '' ? '' : (Math.abs(event.target.value) >= 0 ? Math.abs(event.target.value) : 0))
-      })
+      if(event.target.value > 200000) {
+        this.setState({
+          [event.target.name] : 200000
+        })
+      } 
+      else {
+        this.setState({
+          [event.target.name] : (event.target.value === '' ? '' : (Math.abs(event.target.value) >= 0 ? Math.abs(event.target.value) : 0))
+        })
+      }
       this.setState(this.ComputeDistSpeedModifier)
       this.setState(this.ComputEffectiveSkill)
     }
 
     handleSizeChange(event){
-
-      this.setState({
-        [event.target.name] : event.target.value
-      })
+      if(event.target.value > 100) {
+        this.setState({
+          [event.target.name] : 100
+        })
+      }
+      else {
+        if(event.target.value <= -11) {
+          this.setState({
+            [event.target.name] : -11
+          })
+        }
+        else {
+          this.setState({
+            [event.target.name] : (event.target.value === '' ? '' : event.target.value)
+          })
+        }
+      }
       this.setState(this.ComputSizeModifier)
       this.setState(this.ComputEffectiveSkill)
     }
 
     handleAccuracyChange(event){
-
-      this.setState({
-        [event.target.name] : (event.target.value === '' ? '' : (Math.abs(event.target.value) >= 0 ? Math.abs(event.target.value) : 0))
-      })
+      if(event.target.value > 100) {
+        this.setState({
+          [event.target.name] : 100
+        })
+      } else {
+        this.setState({
+          [event.target.name] : (event.target.value === '' ? '' : (Math.abs(event.target.value) >= 0 ? Math.abs(event.target.value) : 0))
+        })
+      }
       this.setState(this.ComputAccuracyModifier)
       this.setState(this.ComputEffectiveSkill)
     }
 
     handleShotsChange(event){
-
-      this.setState({
-        [event.target.name] : event.target.value
-      })
+      if(event.target.value > 10000) {
+        this.setState({
+          [event.target.name] : 10000
+        })
+      } else {
+        this.setState({
+          [event.target.name] : (event.target.value === '' ? '' : (Math.abs(event.target.value) > 0 ? Math.abs(event.target.value) : 1))
+        })
+      }
       this.setState(this.ComputShotsModifier)
       this.setState(this.ComputEffectiveSkill)
     }
@@ -238,22 +275,23 @@ class DistAttackForm extends Component {
                       {'Базовый уровень умения:'}
                     </h3>
                     <p className='text-style--modalparagraph'>
-                      {'В поле "Базовое умение персонажа" следует вводить число, равное базовому уровню умения персонажа во владении конкретным дистанционным оружием.\nБазовый уровень - это не модифицированный уровень умения, отражающий средние шансы на выполнение атаки без учёта ситуативных модификаторов.\nПодробнее про это можно почитать на странице 171 в базовой книге правил. (Найти перевод книги можно '}
+                      {'В поле "Базовое умение персонажа" следует вводить число, равное базовому уровню умения персонажа во владении конкретным дистанционным оружием.\nЭто число должно быть от 0 до 100!\nБазовый уровень - это не модифицированный уровень умения, отражающий средние шансы на выполнение атаки без учёта ситуативных модификаторов.\nПодробнее про это можно почитать на странице 171 в базовой книге правил. (Найти перевод книги можно '}
                       <a  className="linkstyle--textlink" href="https://www.rulit.me/data/programs/resources/pdf/StivDzhekson_GURPS-4E-BasicSet(polnyyperevod)_RuLit_Me_389900.pdf">здесь</a>
                       {')'}
                     </p>
                     <h3 className='text-style--modalparagraph'>
                       {'Расстояние и скорость цели:'}
                     </h3>
-                    <p className='text-style--maintext bordernone textlinebreak'>
-                      {'Поля ввода "Расстояние до цели" и "Скорость цели" используются для расчёта единого модификатора за скорость и расстояние согласно правилам и таблице на странице 550 в базовой книге правил. Значения этих полей не должны быть отрицательными.'}
+                    <p className='text-style--modalparagraph'>
+                      {'Поля ввода "Расстояние до цели" и "Скорость цели" используются для расчёта единого модификатора за скорость и расстояние согласно правилам и таблице на странице 550 в базовой книге правил.'}
+                      {'\nЗначения этих полей не должны быть отрицательными или превышать 200000! (в случае ввода больших значений они будут автоматически заменены на максимально допустимые)'}
                     </p>
                     <h3 className='text-style--modalparagraph'>
                       {'Модификатор размера цели (МР):'}
                     </h3>
                     <p className='text-style--modalparagraph'>
                       {'"Модификатор размера цели" отражает наиболее крупное измерение существа или предмета: длину, ширину или высоту. Большинство людей и близких по размеру к взрослому человеку объектов имеют 0-вой модификатор размера.'}
-                      {'\nЕсли ваш персонаж стреляет по меньшим или большим целям, он получает соответствуюйщий штраф или бонус к попаданию. Просто введите МР цели в соответствующее поле формы.'}
+                      {'\nЕсли ваш персонаж стреляет по меньшим или большим целям, он получает соответствуюйщий штраф или бонус к попаданию. Просто введите МР цели в соответствующее поле формы. \nВводимое значение должно быть в пределах от -11 до 100!\n(в случае ввода меньшего/большего числа оно будет автоматически заменено на минимальное/максимальное)'}
                       {'\nЧтобы определить размер цели можно воспользоваться правилами и таблицей со страницы 19 в базовой книге правил (ссылка выше).'}
                       {' Если же персонаж хочет попасть по транспорту, лучше обратиться к таблицам и книге, из которых вы планируете брать данный транспорт (на русском языке в подобных таблицах данный модификатор обозначен как "МР", а на английском - "SM")'}
                     </p>
@@ -262,7 +300,7 @@ class DistAttackForm extends Component {
                     </h3>
                     <p className='text-style--modalparagraph'>
                       {'У любого дистанционного оружия (будь то простой арбалет или миниган) есть показатель "Точность". Это премия, которую ваш персонаж получает, если один или более раз использует манёвр "Прицеливание" перед атакой. Подробности о манёвре "Прицеливание" можно узнать на странице 364 в базовой книге правил.'}
-                      {'\nЕсли персонаж целится больше одной секунды или использует дополнительные возможности (например, сошки для винтовки), то он может получить большую премию. Просто введите сумму всех полученных таким образом бонусов в поле "Точность оружия" в форме.'}
+                      {'\nЕсли персонаж целится больше одной секунды или использует дополнительные возможности (например, сошки для винтовки), то он может получить большую премию. Просто введите сумму всех полученных таким образом бонусов в поле "Точность оружия" в форме.\nВводимое значение должно быть не больше 100! (в случае ввода большего значения оно будет автоматически заменено на максимально допустимое)'}
                     </p>
                     <h3 className='text-style--modalparagraph'>
                       {'Количество выстрелов:'}
@@ -270,7 +308,7 @@ class DistAttackForm extends Component {
                     <p className='text-style--modalparagraph'>
                       {'У любого стрелкового оружия есть показатель Скорострельности (сокращённо "Сс" на русском или "RoF" на английском). Если Сс составляет 1, то оружие может выстрелить только один раз за атаку. Если Сс 2 и больше, то из оружия можно вести "Стрельбу очередями" согласно правилам на странице 373.'}
                       {'\nПри ведении стрельбы очередями персонаж получает бонус к эффективному уровню умения за большое количество выстрелов в рамках одной атаки.'}
-                      {'\nПросто введите значение, равное числу выстрелов из оружия за ход, в поле "Количество выстрелов" в форме.'}
+                      {'\nПросто введите значение, равное числу выстрелов из оружия за ход, в поле "Количество выстрелов" в форме.\nЭто значение должно быть от 1 до 10000!'}
                     </p>
                     <h3 className='text-style--modalparagraph'>
                       {'Зоны попадания:'}
@@ -285,6 +323,13 @@ class DistAttackForm extends Component {
                     <p className='text-style--modalparagraph'>
                       {'Эффективный уровень умения персонажа отражает реальные шансы успешно совершить атаку с учётом всех применяемых модификаторов.\nЗначение поля "Эффективное умение персонажа" изменяется автоматически при изменении значений вычисляемых модификаторов и базового умения персонажа в форме.'}
                       {'\nЕсли значение данного поля окажется меньше 3, при попытке провести "бросок успеха" будет выведено предупреждение о невозможности атаки. Это связано с броском трёх шестигранных кубиков и сравнением эффективного умения с выпавшей на кубиках суммой (подробности смотри на странице 343 базовой книги правил). Так как выпавшая сумма не может быть меньше трёх любой персонаж, чьё эффективное умение ниже данного значения, вообще не имеет шансов попасть этой атакой.'}
+                    </p>
+                    <h3 className='text-style--modalparagraph'>
+                      {'Бросок успеха:'}
+                    </h3>
+                    <p className='text-style--modalparagraph'>
+                      {'Согласно правилам GURPS, всякий раз, когда персонаж пытается выполнить какое-то действие (например, использовать умение для совершения атаки) проводится бросок трёх кубиков для определения удалось ли ему это. Это так называемый "Бросок успеха". Для того, чтобы попытка вашего персонажа достигла успеха, сумма, выпавшая на кубиках, должна быть меньше или равна значению эффективного умения в конкретной ситуации. В противном случае - бросок провален.'}
+                      {'\nНезависимо от числа, против которого вы делаете бросок, результаты 3 и 4 всегда являются критическим успехом, а 17 и 18 - провалом!\nДля совершения броска успеха в форме просто нажмите на соответствующую кнопку. Ниже будет выведено значение суммы чисел сгенерированного "броска кубиков" и результат в зависимости от успеха/провала проверки.'}
                     </p>
                   </div>
                 </div>
@@ -321,7 +366,7 @@ class DistAttackForm extends Component {
                 </div>
                 <div className="modifiers-box--single">
                   <label htmlFor="size-id" className="text-style--maintext">Модификатор размера цели</label>
-                  <input className="text-style--maintext" type="number" name="size" id="size-id" value={this.state.size} required onChange={this.handleSizeChange}/>
+                  <input className="text-style--maintext" type="number" name="size" id="size-id" value={this.state.size} min='-11' required onChange={this.handleSizeChange}/>
                   <input className="text-style--maintext input-style--singlemodifier" type="text" name="sizeoutput" id="sizeoutput-id" value={this.state.modifierSize} readOnly />
                 </div>
                 <div className="modifiers-box--single">
@@ -331,7 +376,7 @@ class DistAttackForm extends Component {
                 </div>
                 <div className="modifiers-box--single">
                   <label htmlFor="shots-id" className="text-style--maintext">Количество выстрелов</label>
-                  <input className="text-style--maintext" type="number" name="shots" id="shots-id" value={this.state.shots} min="1" required onChange={this.handleShotsChange}/>
+                  <input className="text-style--maintext" type="number" name="shots" id="shots-id" value={this.state.shots} min='1' max='10000' required onChange={this.handleShotsChange}/>
                   <input className="text-style--maintext input-style--singlemodifier" type="text" name="shotsoutput" id="shotsoutput-id" value={this.state.modifierShots} readOnly />
                 </div>
               </div>
