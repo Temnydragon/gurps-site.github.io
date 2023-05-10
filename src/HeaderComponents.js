@@ -27,15 +27,17 @@ const Nav = () => {
             </li>
           </ul>
           <div className="hamburger-menu">
-            <input id="menu__toggle" type="checkbox" />
-            <label className="menu__btn" htmlFor="menu__toggle">
+            <input id="hamburger-menu--toggle" type="checkbox" />
+            <label className="hamburger-menu--btn" htmlFor="hamburger-menu--toggle">
               <span></span>
             </label>
-            <ul className="menu__box">
-              <li><Link to='/' className="menu__item">О системе</Link></li>
-              <li><Link to='/FirstSteps' className="menu__item">С чего начать?</Link></li>
-              <li><Link to='/ForMasterAndPlayer' className="menu__item">Мастеру/Игроку</Link></li>
-              <li><Link to='/Calculator' className="menu__item">Калькулятор</Link></li>
+            <ul className="hamburger-menu--box">
+              <li><Link to='/' className="text-style--hamburgerheadings">О системе</Link></li>
+              <li><Link to='/Gameplay' className="text-style--hamburgerheadings">Игровой процесс</Link></li>
+              <li><Link to='/Mechanics' className="text-style--hamburgerheadings">Механики игры</Link></li>
+              <li><Link to='/FirstSteps' className="text-style--hamburgerheadings">С чего начать?</Link></li>
+              <li><Link to='/ForMasterAndPlayer' className="text-style--hamburgerheadings">Мастеру/Игроку</Link></li>
+              <li><Link to='/Calculator' className="text-style--hamburgerheadings">Калькулятор</Link></li>
             </ul>
           </div>
       </nav>

@@ -45,9 +45,9 @@ class Calculator extends Component {
       <>
         <main className='page-main'>
           <div className='gridcontainer-modulebuttons'>
-            <button onClick={this.handleFormTypeChange} value={'Dist'} name="changetoDistbutton" id="changetoDistbutton-id" className='module-button text-style--buttontext'>Дистанционные атаки</button>
-            <button onClick={this.handleFormTypeChange} value={'Contact'} name="changetoContactbutton" id="changetoContactbutton-id" className='module-button text-style--buttontext'>Контактные атаки</button>
-            <button onClick={this.handleFormTypeChange} value={'Throwing'} name="changetoThrowingbutton" id="changetoThrowingbutton-id" className='module-button text-style--buttontext'>Метание предметов</button>
+            <button onClick={this.handleFormTypeChange} value={'Dist'} name="changetoDistbutton" id="changetoDistbutton-id" className='module-button text-style--modulebuttons'>Дистанционные атаки</button>
+            <button onClick={this.handleFormTypeChange} value={'Contact'} name="changetoContactbutton" id="changetoContactbutton-id" className='module-button text-style--modulebuttons'>Контактные атаки</button>
+            <button onClick={this.handleFormTypeChange} value={'Throwing'} name="changetoThrowingbutton" id="changetoThrowingbutton-id" className='module-button text-style--modulebuttons'>Метание предметов</button>
           </div>
           <FormType typeofform={this.state.formType} />
         </main>

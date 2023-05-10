@@ -71,7 +71,7 @@ class ThrowingForm extends Component {
                     <h2 className="text-style--subtitle borderedtop-subtitle" >Результат</h2>
 
                     <div className="throwingdistance-box">
-                        <button type="submit" name="dicerollbutton" id="dicerollbutton-id" className="text-style--buttontext">Вычислить дальность</button>
+                        <button type="submit" name="dicerollbutton" id="dicerollbutton-id" className="success-button text-style--buttontext">Вычислить дальность</button>
                         <output name="dicerollresult" id="dicerollresult-id" className="text-style--maintext textblock-center">{this.state.result}</output>
 
                         <ThrowDescription strength={this.state.strength} weight={this.state.weight} distance={this.state.distance}/>

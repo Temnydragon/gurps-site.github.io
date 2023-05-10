@@ -250,8 +250,30 @@ button {
     padding: 0;
 }
 
+.success-button:hover {
+    border: 2px dashed black;
+    cursor: pointer;
+}
+
+.success-button:active {
+    border: 2px groove black;
+    background-color: gray;
+}
+
 .module-button {
     min-height: 100%;
+    border: 4px double #F8BE24;
+    background-color: #527055;
+    cursor: pointer;
+}
+
+.module-button:hover {
+    border: 4px ridge #F8BE24;
+}
+
+.module-button:active {
+    border: 4px groove #F8BE24;
+    text-shadow: 2px 2px 2px black;
 }
 
 .calculator-box > h2 {
@@ -345,9 +367,8 @@ button {
     padding: .6em .8em .5em 1.4em; 
 }
 
-/* стили для вторичного select */
-
-.smallselect {
+/* стиль для вторичного select */
+.small-select {
     font-size: 120%;
     width: 100%;
 }
@@ -381,10 +402,88 @@ button {
     }
 }
 
-/*Стиль для центрирования и контроля размера основной части модального окна с подсказкой */
+@media screen and (max-width: 920px){
+    
+    /*Правило для изменения последовательсноти отображения кнопок переключения между модулями страницы "калькулятор"*/
+    .gridcontainer-modulebuttons {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+        align-items: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 770px){
+    .skill-box {
+        margin: 0 auto;
+        width: 70%;
+        min-width: 100px;
+        grid-template-columns: 1fr 60px;
+        column-gap: 10px;
+    }
+
+    .gridcontainer-allhitzones {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .gridcontainer-hitzone {
+        display: grid;
+        grid-template-columns: 26px auto 20px;
+        column-gap: 30px;
+        max-width: 500px;
+    }
+
+    .modifiers-box--double {
+        width: 80%;
+        min-width: 100px;
+        grid-template-columns: 200px auto 40px;
+        gap: 15px;
+
+        grid-template-areas: "distance distcount distspeedoutput"
+                              "speed speedcount distspeedoutput";
+    }
+      
+    .modifiers-box--single {
+        width: 80%;
+        min-width: 100px;
+        grid-template-columns: 200px auto 40px;
+        gap: 15px;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 580px) {
+    .calculator-box {
+        margin-left: 1vw;
+        margin-right: 1vw;
+    }
+
+    .diceroll-box {
+        width: 40%;
+        min-width: 220px;
+    }
+
+    .modifiers-box--double {
+        grid-template-columns: 170px auto 40px;
+        gap: 10px;
+    }
+
+    .modifiers-box--single {
+        grid-template-columns: 170px auto 40px;
+        gap: 10px;
+    }
+}
+
 @media (min-width: 576px) {
     .modal-dialog {
         max-width: 50%;
         margin: 30px auto;
     }
-  }
+}

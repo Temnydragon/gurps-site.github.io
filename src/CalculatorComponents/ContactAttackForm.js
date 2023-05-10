@@ -263,7 +263,7 @@ class ContactAttackForm extends Component {
                         <label htmlFor='evaluate-id' className='text-style--checkboxlabel'>
                             Оценка противника (от 0 до +3)
                         </label>
-                        <select className='smallselect' id='evaluate-id' value={this.state.evaluateModifier} onChange={this.handleEvaluate}>
+                        <select className='small-select' id='evaluate-id' value={this.state.evaluateModifier} onChange={this.handleEvaluate}>
                             <option value="0">+0</option>
                             <option value="1">+1</option>
                             <option value="2">+2</option>
@@ -274,7 +274,7 @@ class ContactAttackForm extends Component {
                         <label htmlFor='shock-id' className='text-style--checkboxlabel'>
                             Шок от травмы (от 0 до -4)
                         </label>
-                        <select className='smallselect' id='shock-id' value={this.state.shockModifier} onChange={this.handleShock}>
+                        <select className='small-select' id='shock-id' value={this.state.shockModifier} onChange={this.handleShock}>
                             <option value="0">+0</option>
                             <option value="-1">-1</option>
                             <option value="-2">-2</option>
@@ -403,7 +403,7 @@ class ContactAttackForm extends Component {
                         <input className="text-style--maintext" type="number" name="effectiveskill" id="effectiveskill-id" value={this.state.effectiveskill} readOnly />
                     </div>
                     <div className="diceroll-box">
-                        <button type="submit" name="dicerollbutton" id="dicerollbutton-id" className="text-style--buttontext">Бросок успеха</button>
+                        <button type="submit" name="dicerollbutton" id="dicerollbutton-id" className="success-button text-style--buttontext">Бросок успеха</button>
                         <output name="dicerollresult" id="dicerollresult-id" className="text-style--maintext textblock-center">{this.state.diceRollResult}</output>
                     </div>
                 </div>

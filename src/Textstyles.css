@@ -113,6 +113,19 @@
   padding: 5px;
 }
 
+.text-style--modulebuttons {
+  font-family: "Book Antiqua", serif;
+  font-size: 1vw;
+  font-size: 19px;
+  line-height: 28px;
+  text-align: center;
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding: 5px;
+  color: #F8BE24;
+}
+
 .text-style--footertext {
   font-family: "Book Antiqua", serif;
   font-size: 1vw;
@@ -194,4 +207,23 @@
   margin-block-end: 0;
   white-space: pre-line;
   border: none;
+}
+
+.text-style--hamburgerheadings {
+  display: block;
+  padding: 12px 0px;
+  color: #333;
+  font-family: 'Book Antiqua', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.text-style--hamburgerheadings:hover {
+  background-color: #CFD8DC;
+}
+
+@media screen and (max-width: 745px){
+  .text-style--title {
+    font-size: 32px;
+  }
 }
