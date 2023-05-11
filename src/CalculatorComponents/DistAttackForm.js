@@ -261,7 +261,7 @@ class DistAttackForm extends Component {
                   </div>
                   <div className='modal-maintext'>
                     <p className='text-style--modalparagraph'>
-                      {'Данный модуль ускоряет процесс расчётов дистанционных атак по правилам GURPS.'}
+                      {'Данный модуль ускоряет процесс расчётов успешности дистанционных атак по правилам GURPS.'}
                     </p>
                     <h3 className='text-style--modalparagraph'>
                       {'Важно:'}

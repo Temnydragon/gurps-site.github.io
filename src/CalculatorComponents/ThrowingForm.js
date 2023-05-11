@@ -4,15 +4,23 @@ import ThrowDescription from './ThrowDescription';
 class ThrowingForm extends Component {
     constructor(props) {
         super(props)
-        this.state = { strength:'0', weight:'0', distance:'', result:'' }
+        this.state = { strength:'10', weight:'1', distance:'', result:'' }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     
     handleChange(event){
-      this.setState({
-        [event.target.name] : event.target.value
-      })
+        if(event.target.value > 1000000) {
+            this.setState({
+              [event.target.name] : 1000000
+            })
+        }
+        else {
+            this.setState({
+              /*Проверка для устранения значений равных или меньше 0*/
+              [event.target.name] : (event.target.value === '' ? '' : (Math.abs(event.target.value) > 0 ? Math.abs(event.target.value) : 1))
+            })
+        }
     }
 
     handleSubmit(event){
@@ -49,6 +57,52 @@ class ThrowingForm extends Component {
     render() {
         return (
             <form className='form-block' onSubmit={this.handleSubmit}>
+                <div id="openModal" className='modal'>
+                    <div className='modal-dialog'>
+                        <div className='modal-content'>
+                            <div className='modal-header'>
+                                <h2 className='text-style--maintext'>Модуль метания предметов</h2>
+                                <a href="#closeModal" title="Close" className='text-style--closebutton'>×</a>
+                            </div>
+                            <div className='modal-maintext'>
+                                <p className='text-style--modalparagraph'>
+                                    {'Данный модуль позволяет быстро расчитать возможную дальность метания предмета в соответствии с его весом и силой персонажа по правилам GURPS.'}
+                                </p>
+                                <h3 className='text-style--modalparagraph'>
+                                    {'Важно:'}
+                                </h3>
+                                <p className='text-style--modalparagraph'>
+                                    {'Значения полей ввода веса предмета и силы персонажа должны быть в пределах от 1 до 1000000!'}
+                                    {'\n\nОба поля данной формы не должны содержать дробные значения (в случае ввода, дробная часть не будет учитываться в расчётах)!'}
+                                    {'\n\nСогласно правилам системы 1 фунт = 0,5 кг (в реальности это соотношение примерно равно 1 к 0,45). В книгах системы вес предметов обычно указан именно в фунтах. Если вы хотите определить вес предмета, зная его вес в кг, переведите кг в фунты и округлите вверх до целого числа перед вводом значения в поле формы.'}
+                                    {'\n\nДанный модуль не относится к расчёту дальности метания оружия (например, копья) так как специально сбалансированное метательное снаряжение может иметь собственные зависимости дальности от силы метателя.'}
+                                </p>
+                                <h3 className='text-style--modalparagraph'>
+                                    {'Сила персонажа:'}
+                                </h3>
+                                <p className='text-style--modalparagraph'>
+                                    {'В данное поле нужно вводить числовое значение соответствующего атрибута конкретного персонажа, который пытается метнуть предмет. Подробнее про атрибуты можно почитать на странице "Механики игры" данного сайта или в книге правил системы.'}
+                                    {'\n(Найти перевод книги правил можно '}
+                                    <a  className="linkstyle--textlink" href="https://www.rulit.me/data/programs/resources/pdf/StivDzhekson_GURPS-4E-BasicSet(polnyyperevod)_RuLit_Me_389900.pdf">здесь</a>
+                                    {')'}
+                                </p>
+                                <h3 className='text-style--modalparagraph'>
+                                    {'Вес предмета:'}
+                                </h3>
+                                <p className='text-style--modalparagraph'>
+                                    {'В данное поле нужно вводить числовое значение веса предмета, который пытается метнуть персонаж.'}
+                                </p>
+                                <h3 className='text-style--modalparagraph'>
+                                    {'Результат:'}
+                                </h3>
+                                <p className='text-style--modalparagraph'>
+                                    {'Чтобы вычислить максимальную дальность метания, после ввода значений силы персонажа и метаемого предмета нажмите на кнопку "Вычислить дальность".'}
+                                    {'\nЕсли введённого значения силы персонажа недостаточно для метания предмета с указанным весом, будет атоматически выведено соответствующее сообщение ещё до нажатия кнопки.'}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <section className='main-content--box'>
                     <h1 className="text-style--title textblock-center">Модуль метания предметов</h1>
                     <p className='text-style--maintext main-content--text bordernone textlinebreak textblock-center'>
@@ -57,6 +111,7 @@ class ThrowingForm extends Component {
                 </section>
 
                 <section className='calculator-box'>
+                    <a href='#openModal' className='question-button'>?</a>
                     <div className=''>
                         <div className="skill-box">
                             <label htmlFor="strength-id" className="text-style--maintext textblock-center">Сила персонажа</label>

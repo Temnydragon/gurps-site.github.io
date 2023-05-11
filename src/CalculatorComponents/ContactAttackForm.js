@@ -6,7 +6,7 @@ class ContactAttackForm extends Component {
     constructor(props) {
         super(props)
         this.state = {basikskill:10, effectiveskill:10, attackType: 'base-attack', nonMainhandCheck: false, isCapturedCheck: false, bigShieldHold: false, evaluateModifier:0, shockModifier:0, pozeModifier:'0', distractionModifier:'0', painModifier:'0', nauseaModifier:'0', drunkModifier:'0', euphoriaModifier:'0', modifierZone: '0'}
-        this.handleChange = this.handleChange.bind(this)
+        this.handleBasicSkillChange = this.handleBasicSkillChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handlenonMainhandCheck = this.handlenonMainhandCheck.bind(this)
         this.handleCapture = this.handleCapture.bind(this)
@@ -27,11 +27,18 @@ class ContactAttackForm extends Component {
         this.setState(this.computeDiceRollResult)
     }
 
-    handleChange(event){
-        this.setState({
-          [event.target.name] : event.target.value
-        })
-  
+    handleBasicSkillChange(event){
+        if(event.target.value > 100) {
+            this.setState({
+              [event.target.name] : 100
+            })
+        }
+        else {
+            this.setState({
+              /*Проверка для устранения отрицательных значений*/
+              [event.target.name] : (event.target.value === '' ? '' : (Math.abs(event.target.value) >= 0 ? Math.abs(event.target.value) : 0))
+            })
+        }
         this.setState(this.ComputEffectiveSkill)
     }
   
@@ -210,6 +217,52 @@ class ContactAttackForm extends Component {
     render() {
         return (
         <form className='form-block' onSubmit={this.handleSubmit}>
+            <div id="openModal" className='modal'>
+                <div className='modal-dialog'>
+                    <div className='modal-content'>
+                        <div className='modal-header'>
+                            <h2 className='text-style--maintext'>Модуль метания предметов</h2>
+                            <a href="#closeModal" title="Close" className='text-style--closebutton'>×</a>
+                        </div>
+                        <div className='modal-maintext'>
+                            <p className='text-style--modalparagraph'>
+                                {'Данный модуль ускоряет процесс расчётов успешности контактных атак по правилам GURPS.'}
+                            </p>
+                            <h3 className='text-style--modalparagraph'>
+                                {'Важно:'}
+                            </h3>
+                            <p className='text-style--modalparagraph'>
+                                {'Значения полей ввода веса предмета и силы персонажа должны быть в пределах от 1 до 1000000!'}
+                                {'\n\nОба поля данной формы не должны содержать дробные значения (в случае ввода, дробная часть не будет учитываться в расчётах)!'}
+                                {'\n\nСогласно правилам системы 1 фунт = 0,5 кг (в реальности это соотношение примерно равно 1 к 0,45). В книгах системы вес предметов обычно указан именно в фунтах. Если вы хотите определить вес предмета, зная его вес в кг, переведите кг в фунты и округлите вверх до целого числа перед вводом значения в поле формы.'}
+                                {'\n\nДанный модуль не относится к расчёту дальности метания оружия (например, копья) так как специально сбалансированное метательное снаряжение может иметь собственные зависимости дальности от силы метателя.'}
+                            </p>
+                            <h3 className='text-style--modalparagraph'>
+                                    {'Сила персонажа:'}
+                            </h3>
+                            <p className='text-style--modalparagraph'>
+                                {'В данное поле нужно вводить числовое значение соответствующего атрибута конкретного персонажа, который пытается метнуть предмет. Подробнее про атрибуты можно почитать на странице "Механики игры" данного сайта или в книге правил системы.'}
+                                {'\n(Найти перевод книги правил можно '}
+                                <a  className="linkstyle--textlink" href="https://www.rulit.me/data/programs/resources/pdf/StivDzhekson_GURPS-4E-BasicSet(polnyyperevod)_RuLit_Me_389900.pdf">здесь</a>
+                                {')'}
+                            </p>
+                            <h3 className='text-style--modalparagraph'>
+                                {'Вес предмета:'}
+                            </h3>
+                            <p className='text-style--modalparagraph'>
+                                {'В данное поле нужно вводить числовое значение веса предмета, который пытается метнуть персонаж.'}
+                            </p>
+                            <h3 className='text-style--modalparagraph'>
+                                {'Результат:'}
+                            </h3>
+                            <p className='text-style--modalparagraph'>
+                                {'Чтобы вычислить максимальную дальность метания, после ввода значений силы персонажа и метаемого предмета нажмите на кнопку "Вычислить дальность".'}
+                                {'\nЕсли введённого значения силы персонажа недостаточно для метания предмета с указанным весом, будет атоматически выведено соответствующее сообщение ещё до нажатия кнопки.'}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <section className='main-content--box'>
                 <h1 className="text-style--title textblock-center">Модуль контактных атак</h1>
                 <p className='text-style--maintext main-content--text bordernone textlinebreak textblock-center'>
@@ -218,10 +271,11 @@ class ContactAttackForm extends Component {
             </section>
 
             <section className='calculator-box'>
+                <a href='#openModal' className='question-button'>?</a>
                 <div className='borderedbottom-block'>
                     <div className="skill-box">
                         <label htmlFor="basikskill-id" className="text-style--maintext textblock-center">Базовое умение персонажа</label>
-                        <input className="text-style--maintext" type="number" name="basikskill" id="basikskill-id" value={this.state.basikskill} onChange={this.handleChange}/>
+                        <input className="text-style--maintext" type="number" name="basikskill" id="basikskill-id" value={this.state.basikskill} onChange={this.handleBasicSkillChange}/>
                     </div>
                 </div>
 
