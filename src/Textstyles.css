@@ -207,6 +207,7 @@
   margin-block-end: 0;
   white-space: pre-line;
   border: none;
+  padding: 0 10px;
 }
 
 .text-style--hamburgerheadings {
