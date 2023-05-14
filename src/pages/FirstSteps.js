@@ -14,7 +14,7 @@ function FirstSteps () {
           <section className="main-content--box numberedlist">
               <p className="text-style--maintext main-content--text textlinebreak bordernone notoppad">
                 {'1. Прочитайте сокращённый вариант общих правил под названием GURPS Lite. На русском языке данную книжку вы можете найти '}
-                <a  className="linkstyle--textlink" href="https://fuzionpowered.ucoz.ru/_ld/0/8_GURPS_lite_ru.pdf">здесь.</a>
+                <a  className="linkstyle--textlink" href="https://fuzionpowered.ucoz.ru/_ld/0/8_GURPS_lite_ru.pdf" target='_blank'>здесь.</a>
                 {' Этого будет достаточно для понимания основ и подготовки к первой игре.'}
               </p>
 
@@ -24,18 +24,18 @@ function FirstSteps () {
 
               <p className="text-style--maintext main-content--text textlinebreak bordernone notoppad">
                 {'3. Создайте своего персонажа. Для этого вам понадобится шаблон листа персонажа, который вы можете найти '}
-                <a className='linkstyle--textlink' href="https://vk.com/wall-3656533_1322">здесь.</a>
+                <a className='linkstyle--textlink' href="https://vk.com/wall-3656533_1322" target='_blank'>здесь.</a>
                 {' Также, для этих целей вам могут быть полезны сайт '}
-                <a className='linkstyle--textlink' href="https://mentor.gurps.ru/">GURPS Mentor</a>
+                <a className='linkstyle--textlink' href="https://mentor.gurps.ru/" target='_blank'>GURPS Mentor</a>
                 {' и специальная программа '}
-                <a className='linkstyle--textlink' href="https://gurpscharactersheet.com/">GURPS Character Sheet.</a>
+                <a className='linkstyle--textlink' href="https://gurpscharactersheet.com/" target='_blank'>GURPS Character Sheet.</a>
               </p>
           </section>
 
           <section className="main-content--box">
             <p className='text-style--maintext bordernone textlinebreak'>
               {'Когда вы сделаете всё вышеописанное, можете спокойно начинать свои приключения по мирам, созданным другими любителями GURPS. Если же вам захочется большего, вы всегда можете обратиться к многообразию книг на '}
-              <a className='linkstyle--textlink' href="https://www.sjgames.com/gurps/">официальном сайте системы</a>
+              <a className='linkstyle--textlink' href="https://www.sjgames.com/gurps/" target='_blank'>официальном сайте системы</a>
               {' или посетить другие разделы данного сайта.'}
             </p>
           </section>

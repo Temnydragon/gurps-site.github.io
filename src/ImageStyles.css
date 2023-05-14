@@ -70,11 +70,7 @@
 
 @media screen and (max-width: 1370px) {
   .image-style--mainimage {
-    display: block;
-    padding: 0;
     width: 80%;
-    margin: auto;
-    margin-bottom: 30px;
   }
   
   .image-style--imagenearpoints {
@@ -114,5 +110,21 @@
     border-radius: 32px;
     padding-left: 10px;
     align-self: center;
+  }
+}
+
+@media screen and (max-width: 1125px) {
+  .image-style--imagenearpointsfantasy {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .image-style--imageinblockdices, .image-style--imageinblockbook, .image-style--imagenearpointslist, .image-style--imagenearpointsbook {
+    display: none;
+  }
+
+  .image-style--mainimage {
+    width: 90%;
   }
 }

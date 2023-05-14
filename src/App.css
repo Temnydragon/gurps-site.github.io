@@ -267,7 +267,7 @@ ul li ul li {
   visibility: hidden;
   height: auto;
   width: 30%;
-  min-width: 150px;
+  min-width: 120px;
   margin: 0;
   padding: 5px 10px;
   list-style: none;
@@ -330,7 +330,6 @@ ul li ul li {
   .gridcontainer--mainimagetext {
     width: 30%;
   }
-  
 }
 
 @media screen and (max-width: 920px) {
@@ -350,6 +349,11 @@ ul li ul li {
   .sytename--link {
     font-size: 24px;
   }
+
+  .rightimgtextblock {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 @media screen and (max-width: 430px) {
@@ -364,5 +368,25 @@ ul li ul li {
   .header-content--box {
     margin-left: 5px;
     margin-right: 5px;
+  }
+
+  .gridcontainer--points {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .rightandleftpadding {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  #hamburger-menu--toggle:checked ~ .hamburger-menu--box {
+    visibility: visible;
+    right: 5px;
+    top: 150px;
+  }
+
+  .gridcontainer--mainimagetext {
+    display: none;
   }
 }

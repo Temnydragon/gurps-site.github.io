@@ -387,7 +387,7 @@ button {
         position: absolute;
         right: 20px;
         top: 2vw;
-        width: 3vw;
+        width: 4vw;
         border-radius: 2vw;
         border: 3px solid rgb(76, 161, 230) ;
         background: none;
@@ -458,6 +458,12 @@ button {
         gap: 15px;
         justify-content: space-between;
     }
+
+    .question-button {
+        width: 5vw;
+        font-size: 4vw;
+        right: 10px;
+    }
 }
 
 @media (max-width: 580px) {
@@ -482,7 +488,7 @@ button {
     }
 }
 
-@media (min-width: 576px) {
+@media (min-width: 768px) {
     .modal-dialog {
         max-width: 50%;
         margin: 30px auto;

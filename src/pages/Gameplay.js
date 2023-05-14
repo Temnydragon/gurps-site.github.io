@@ -21,7 +21,7 @@ function Gameplay () {
             <img src={Imagination} className="image-style--imagenearpointsfantasy" alt="imagination" title=""></img>
             <div className='gridcontainer--points'>
               <div>
-                <h2 className="text-style--subtitle">1. Повествования мастера</h2>
+                <h2 className="text-style--subtitle">1. Повествование мастера</h2>
                 <p className='text-style--maintext textlinebreak'>
                   {'На этом этапе мастер рассказывает игрокам где находятся их персонажи, что их окружает, с чем или кем и как именно они могут взаимодействовать. Порой это может быть красивым и длинным монологом, а иногда мастер ограничивается парой кратких предложений. \n\nДалее мастер предоставляет игрокам варианты действий и ждёт от них принятия решения или отвечает на их уточняющие вопросы касательно ситуации, в которой оказались персонажи игроков.'}
                 </p>

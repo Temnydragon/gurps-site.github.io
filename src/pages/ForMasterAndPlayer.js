@@ -15,9 +15,9 @@ const ForMasterAndPlayer = () => {
         <section className="main-content--box numberedlist">
             <p className="text-style--maintext main-content--text textlinebreak bordernone notoppad">
               {'1. По мере увеличения игрового опыта, вам рано или поздно станет мало тех возможностей, что даёт GURPS Lite. Как только это случится, попробуйте углубиться в полную версию правил. Для игрока достаточно изучить книгу “GURPS Basic Set: Characters”, которую можно приобрести в оригинале на '}
-              <a  className="linkstyle--textlink" href="https://www.sjgames.com/gurps/books/Basic/">официальном сайте</a>
+              <a  className="linkstyle--textlink" href="https://www.sjgames.com/gurps/books/Basic/" target='_blank'>официальном сайте</a>
               {' или скачать русскую версию, например, '}
-              <a  className="linkstyle--textlink" href="https://www.rulit.me/data/programs/resources/pdf/StivDzhekson_GURPS-4E-BasicSet(polnyyperevod)_RuLit_Me_389900.pdf">отсюда.</a>
+              <a  className="linkstyle--textlink" href="https://www.rulit.me/data/programs/resources/pdf/StivDzhekson_GURPS-4E-BasicSet(polnyyperevod)_RuLit_Me_389900.pdf" target='_blank'>отсюда.</a>
             </p>
 
             <p className="text-style--maintext main-content--text textlinebreak bordernone notoppad">

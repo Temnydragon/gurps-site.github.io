@@ -83,7 +83,7 @@ class ThrowingForm extends Component {
                                 <p className='text-style--modalparagraph'>
                                     {'В данное поле нужно вводить числовое значение соответствующего атрибута конкретного персонажа, который пытается метнуть предмет. Подробнее про атрибуты можно почитать на странице "Механики игры" данного сайта или в книге правил системы.'}
                                     {'\n(Найти перевод книги правил можно '}
-                                    <a  className="linkstyle--textlink" href="https://www.rulit.me/data/programs/resources/pdf/StivDzhekson_GURPS-4E-BasicSet(polnyyperevod)_RuLit_Me_389900.pdf">здесь</a>
+                                    <a  className="linkstyle--textlink" href="https://www.rulit.me/data/programs/resources/pdf/StivDzhekson_GURPS-4E-BasicSet(polnyyperevod)_RuLit_Me_389900.pdf" target='_blank'>здесь</a>
                                     {')'}
                                 </p>
                                 <h3 className='text-style--modalparagraph'>
