@@ -1,13 +1,26 @@
 {
   "files": {
-    "main.css": "/gurps-site.github.io/static/css/main.e6c13ad2.css",
-    "main.js": "/gurps-site.github.io/static/js/main.692d44e9.js",
+    "main.css": "/gurps-site.github.io/static/css/main.6ddddffa.css",
+    "main.js": "/gurps-site.github.io/static/js/main.12bc9b03.js",
+    "static/media/boardgame.png": "/gurps-site.github.io/static/media/boardgame.64f1d2dd56ef4805c958.png",
+    "static/media/paper-sheet_top.jpg": "/gurps-site.github.io/static/media/paper-sheet_top.6fae070b1e289a14da08.jpg",
+    "static/media/dices.jpg": "/gurps-site.github.io/static/media/dices.e9233951f4678d8cee7e.jpg",
+    "static/media/small_charactersheet.jpg": "/gurps-site.github.io/static/media/small_charactersheet.4d12ac96bdeeb22a3a35.jpg",
+    "static/media/imagination.jpg": "/gurps-site.github.io/static/media/imagination.189c47a052f450115cbc.jpg",
+    "static/media/kittentavern.jpg": "/gurps-site.github.io/static/media/kittentavern.44a97b4950075f86e332.jpg",
+    "static/media/bookanddices.jpg": "/gurps-site.github.io/static/media/bookanddices.280eb9aa57064507a6da.jpg",
+    "static/media/dice_3d6.png": "/gurps-site.github.io/static/media/dice_3d6.0c051eaa4e3460fb586f.png",
+    "static/media/basiksetimage.jpg": "/gurps-site.github.io/static/media/basiksetimage.6274027700b60d15765a.jpg",
+    "static/media/coffee-splash-splatter.png": "/gurps-site.github.io/static/media/coffee-splash-splatter.0144ae64654156ab86c8.png",
+    "static/media/png-pencil.png": "/gurps-site.github.io/static/media/png-pencil.7aa8863f40b4c6365528.png",
+    "static/media/d20_dice.png": "/gurps-site.github.io/static/media/d20_dice.839ab40a95492d538f8d.png",
+    "static/media/D6Icon.png": "/gurps-site.github.io/static/media/D6Icon.3fb24bbcf291c91e4cd2.png",
     "index.html": "/gurps-site.github.io/index.html",
-    "main.e6c13ad2.css.map": "/gurps-site.github.io/static/css/main.e6c13ad2.css.map",
-    "main.692d44e9.js.map": "/gurps-site.github.io/static/js/main.692d44e9.js.map"
+    "main.6ddddffa.css.map": "/gurps-site.github.io/static/css/main.6ddddffa.css.map",
+    "main.12bc9b03.js.map": "/gurps-site.github.io/static/js/main.12bc9b03.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.692d44e9.js"
+    "static/css/main.6ddddffa.css",
+    "static/js/main.12bc9b03.js"
   ]
 }
