@@ -25,7 +25,6 @@
 .question-button:hover {
     border: 3px dashed rgb(6, 122, 216) ;
     color: rgb(6, 122, 216);
-    /*text-shadow: rgba(0, 0, 0, 0.25) 0px 4px 3.5px;*/
 }
 
 .question-button:active {
@@ -34,38 +33,37 @@
 }
 
 /*стили модального окна-подсказки для страниц калькулятора*/
-.modal {
+.modalWindow {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0,0,0,0.5);
-    opacity: 0; /* по умолчанию модальное окно прозрачно */
-    -webkit-transition: opacity 0.2s ease-in; 
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
     -moz-transition: opacity 0.2s ease-in;
     transition: opacity 0.2s ease-in; /* анимация перехода */
-    pointer-events: none; /* окно невидимо для событий мыши */
+    pointer-events: none;
     margin: 0;
     padding: 0;
     z-index: 10;
 }
 
-.modal:target {
-    opacity: 1; /* делаем модальное окно видимым убирая прозрачность */
+.modalWindow:target {
+    opacity: 1; /* делаем модальное окно видимым, убирая прозрачность */
 	pointer-events: auto; /* делаем окно видимым для событий мыши */
     overflow-y: auto; /* устанавливаем прокрутку по y, для случая, когда не помещается весь на страницу */
 }
 
-/* свойства ширины и отступов для самоко окна*/
-.modal-dialog {
+/* свойства ширины и отступов для самоко всплывающего окна*/
+.modalWindow-innerbox {
     position: relative;
     width: auto;
     margin: 5px;
     margin-top: 30px;
 }
 
-.modal-content {
+.modalWindow-content {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -74,31 +72,22 @@
     border-radius: .3rem;
 }
 
-.modal-header {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
+.modalWindow-header {
     display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
     align-items: center;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 15px;
     border-bottom: 1px solid rgba(0,0,0,0.5);
 }
 
-.modal-maintext {
+.modalWindow-maintext {
     position: relative;
     flex: 1 1 auto;
     padding: 15px;
     overflow: auto;
 }
 
-.modal-maintext>h3 {
+.modalWindow-maintext>h3 {
     padding: 10px;
     padding-top: 20px;
 }
@@ -320,11 +309,11 @@ button {
 
 /* Стили для тега select в модуле "Контактные атаки" */
 
-.select-css { 
+.select-box { 
     display: block;
-    font-size: 16px; 
-    font-family: sans-serif; 
-    font-weight: 700; 
+    font-size: 20px; 
+    font-family: "Book Antiqua", serif; 
+    font-weight: bold;
     color: #444; 
     line-height: 1.3; 
     padding: .6em 1.4em .5em .9em;
@@ -336,39 +325,38 @@ button {
     margin-right: auto;
     margin-bottom: 20px;
     border: 1px solid #aaa;
-    box-shadow: 0 1px 0 1px rgba(0,0,0,.04); 
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04); 
     border-radius: .5em;
      -moz-appearance: none;
      -webkit-appearance: none;
      appearance: none;
      background-color: #fff; 
-    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'), linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%); 
-    
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'), linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
     background-repeat: no-repeat, repeat;
     background-position: right .7em top 50%, 0 0;
     background-size: .65em auto, 100%; 
 } 
 
-.select-css::-ms-expand { display: none; }
+/*стиль кнопки раскрытия списка типа атаки в Internet Explorer*/
+.select-box::-ms-expand { 
+    display: none; 
+}
 
-.select-css:hover { border-color: #888; }
+.select-box:hover { 
+    border-color: grey; 
+}
 
-.select-css:focus { 
-    border-color: #aaa; 
-    box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
-    box-shadow: 0 0 0 3px -moz-mac-focusring; 
-    color: #222;
+.select-box:focus { 
+    border-color: grey; 
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
     outline: none; 
 }
 
-.select-css option { font-weight:normal; } 
-
-*[dir="rtl"] .select-css, :root:lang(ar) .select-css, :root:lang(iw) .select-css { 
-    background-position: left .7em top 50%, 0 0; 
-    padding: .6em .8em .5em 1.4em; 
+.select-box option { 
+    font-weight:normal;
 }
 
-/* стиль для вторичного select (мелкие модификаторы одном из модулей страницы "Калькулятор") */
+/* стиль для вторичного select (мелкие модификаторы в одном из модулей страницы "Калькулятор") */
 .small-select {
     font-size: 120%;
     width: 100%;
@@ -489,7 +477,7 @@ button {
 }
 
 @media (min-width: 768px) {
-    .modal-dialog {
+    .modalWindow-innerbox {
         max-width: 50%;
         margin: 30px auto;
     }

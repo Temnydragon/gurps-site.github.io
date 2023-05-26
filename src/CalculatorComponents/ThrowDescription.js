@@ -12,7 +12,7 @@ function ThrowDescription(props) {
     else {
         return (
             <div className='throwingdistance-box--result'>
-                <p className='text-style--maintext textblock-center'>{'Дистанция на которую вы можете метнуть предмет: '}{props.distance}{' ярдов'}</p>
+                <p className='text-style--maintext textblock-center textlinebreak'>{'Дистанция на которую вы можете метнуть предмет: \n'}{props.distance}{' ярдов'}</p>
             </div>
         );
     }

@@ -27,13 +27,7 @@ class Calculator extends Component {
   constructor(props) {
     super(props)
     this.state = { formType: 'Dist' }
-    this.handleSubmit = this.handleSubmit.bind(this)
     this.handleFormTypeChange = this.handleFormTypeChange.bind(this)
-  }
-
-  handleSubmit(event){
-    event.preventDefault()
-    this.setState({ [event.target.name] : event.target.value })
   }
 
   handleFormTypeChange(event){
@@ -52,7 +46,13 @@ class Calculator extends Component {
           <FormType typeofform={this.state.formType} />
         </main>
 
-        <footer className='page-footer'>
+        <footer className="page-footer">
+                <p className='text-style--footertext'>
+                    {'© Беседин Д. К., 2023'}
+                </p>
+                <p className='text-style--footertext textlinebreak'>
+                    {'GURPS™ является зарегистрированной торговой маркой Steve Jackson Games,\nавторское право на которую принадлежит Steve Jackson Games.'}
+                </p>
         </footer>
       </>
     )

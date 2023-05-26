@@ -1,7 +1,6 @@
 import React from 'react';
 
 class HitZone extends React.Component {
-
     render () {
         return (
             <div className="gridcontainer-hitzone">

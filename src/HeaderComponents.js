@@ -27,8 +27,8 @@ const Nav = () => {
             </li>
           </ul>
           <div className="hamburger-menu">
-            <input id="hamburger-menu--toggle" type="checkbox" />
-            <label className="hamburger-menu--btn" htmlFor="hamburger-menu--toggle">
+            <input id='open-menu' type="checkbox" className='hamburger-menu--check'/>
+            <label htmlFor="open-menu" className="hamburger-menu--button">
               <span></span>
             </label>
             <ul className="hamburger-menu--box">

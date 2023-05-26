@@ -35,7 +35,7 @@ class ContactAttackForm extends Component {
         }
         else {
             this.setState({
-              /*Проверка для устранения отрицательных значений*/
+              //Проверка для устранения отрицательных значений
               [event.target.name] : (event.target.value === '' ? '' : (Math.abs(event.target.value) >= 0 ? Math.abs(event.target.value) : 0))
             })
         }
@@ -178,8 +178,8 @@ class ContactAttackForm extends Component {
     }
 
     getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
+        min = Math.ceil(min); //округление в большую сторону
+        max = Math.floor(max); // округление в меньшую сторону
         return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
     }
 
@@ -217,105 +217,105 @@ class ContactAttackForm extends Component {
     render() {
         return (
         <form className='form-block' onSubmit={this.handleSubmit}>
-            <div id="openModal" className='modal'>
-                <div className='modal-dialog'>
-                    <div className='modal-content'>
-                        <div className='modal-header'>
+            <div id="open-modalWindow" className='modalWindow'>
+                <div className='modalWindow-innerbox'>
+                    <div className='modalWindow-content'>
+                        <div className='modalWindow-header'>
                             <h2 className='text-style--maintext'>Модуль контактных атак</h2>
-                            <a href="#closeModal" title="Close" className='text-style--closebutton'>×</a>
+                            <a href="#close-modalWindow" title="Close" className='text-style--closebutton'>×</a>
                         </div>
-                        <div className='modal-maintext'>
-                            <p className='text-style--modalparagraph'>
+                        <div className='modalWindow-maintext'>
+                            <p className='text-style--modalWindowparagraph'>
                                 {'Данный модуль ускоряет процесс расчётов успешности контактных атак по правилам GURPS.'}
                             </p>
-                            <h3 className='text-style--modalparagraph'>
+                            <h3 className='text-style--modalWindowparagraph'>
                                 {'Важно:'}
                             </h3>
-                            <p className='text-style--modalparagraph'>
+                            <p className='text-style--modalWindowparagraph'>
                                 {'Значение поля ввода "Базовое умение персонажа" не должно содержать отрицательных чисел, знаков, или быть пустым!'}
                                 {'\n\nТакже это поле не должно содержать дробные значения (в случае ввода, дробная часть не будет учитываться в расчётах)!'}
                             </p>
-                            <h3 className='text-style--modalparagraph'>
+                            <h3 className='text-style--modalWindowparagraph'>
                                 {'Базовый уровень умения:'}
                             </h3>
-                            <p className='text-style--modalparagraph'>
+                            <p className='text-style--modalWindowparagraph'>
                                 {'В поле "Базовое умение персонажа" следует вводить число, равное базовому уровню умения персонажа во владении конкретным контактным оружием.\nЭто число должно быть от 0 до 100!\nБазовый уровень - это не модифицированный уровень умения, отражающий средние шансы на выполнение атаки без учёта ситуативных модификаторов.\nПодробнее про это можно почитать на странице 171 в базовой книге правил. (Найти перевод книги можно '}
-                                <a  className="linkstyle--textlink" href="https://www.rulit.me/data/programs/resources/pdf/StivDzhekson_GURPS-4E-BasicSet(polnyyperevod)_RuLit_Me_389900.pdf" target='_blank'>здесь</a>
+                                <a  className="linkstyle--textlink" href="//www.rulit.me/data/programs/resources/pdf/StivDzhekson_GURPS-4E-BasicSet(polnyyperevod)_RuLit_Me_389900.pdf" target='_blank' rel="noreferrer">здесь</a>
                                 {')'}
                             </p>
-                            <h3 className='text-style--modalparagraph'>
+                            <h3 className='text-style--modalWindowparagraph'>
                                 {'Тип атаки:'}
                             </h3>
-                            <p className='text-style--modalparagraph'>
+                            <p className='text-style--modalWindowparagraph'>
                                 {'В выпадающем поле текущего модуля данной страницы можно выбрать один из предложенных вариантов типа атаки. Каждый тип имеет свои особенности, которые вкратце описываются в текстовом сообщении в конце формы (чуть выше поля "Эффективное умение персонажа"). Это сообщение изменяется в соответствии с выбранным типом.'}
                                 {'\nПодробнее про типы атаки в контактном бою можно почитать в книге правил системы в главе "Бой". (Ссылка на книгу приведена выше)'}
                             </p>
-                            <h3 className='text-style--modalparagraph'>
+                            <h3 className='text-style--modalWindowparagraph'>
                                 {'Основные модификаторы:'}
                             </h3>
-                            <p className='text-style--modalparagraph'>
+                            <p className='text-style--modalWindowparagraph'>
                                 {'Есть три основных модификатора, влияющих на значение эффективного уровня умения персонажа: атака не основной рукой, нахождение в захвате и удержание большого щита (или подобного предмета) во время совершения атаки.'}
                                 {'\n\nАтака не основной рукой подразумевает попытку контактной атаки с помощью оружия в неведущей руке. При создании персонажа по правилам GURPS в его листе обычно указывается ведущая рука. Если у персонажа есть преимущество "Обоюдорукость", не выбирайте данный модификатор!'}
                                 {'\n\nЕсли атакующий схвачен кем-то другим, то ему сложнее совершить любую атаку из-за ограниченности движения. Выберите данный модификатор, если в момент совершения атаки персонаж находится в захвате.'}
                                 {'\n\nПри использовании больших щитов персонаж лучше защищается от чужих атак, но это также мешает ему самому так как щит перекрывает часть обзора при сражении в контактном бою. Выберите данный модификатор, если во время атаки атакующий держит большой щит или схожий объект.'}
                             </p>
-                            <h3 className='text-style--modalparagraph'>
+                            <h3 className='text-style--modalWindowparagraph'>
                                 {'Оценка противника:'}
                             </h3>
-                            <p className='text-style--modalparagraph'>
+                            <p className='text-style--modalWindowparagraph'>
                                 {'Оценка - это манёвр, позволяющий персонажу потратить ход (или несколько ходов) на внимательное наблюдение за противником для получения премии к следующей атаке по этому противнику. Манёвр "Оценка" даёт +1 к эффективному уровню умения контактной атаки, нацеленной против кокретного противника. Персонаж может выполнять данный манёвр до трёх ходов подряд чтобы получить до +3 к уровню умения.'}
                                 {'\nПросто выберите нужное значение в соответствии с потраченным на этот манёвр количеством ходов в выпадающем списке рядом с подписью "Оценка противника".'}
                             </p>
-                            <h3 className='text-style--modalparagraph'>
+                            <h3 className='text-style--modalWindowparagraph'>
                                 {'Шок от ранений:'}
                             </h3>
-                            <p className='text-style--modalparagraph'>
+                            <p className='text-style--modalWindowparagraph'>
                                 {'Шок - это особый модификатор, отражающий реальный болевой шок от получаемых ранений в бою. Хоть этот модификатор является опциональным и не всегда используется, он позволяет серьёзно отразить разницу между привыкшым к боли и испытаниям воину и начинающим новобранцем.'}
                                 {'\nШок работает по следующему принципу: когда ваш персонаж получает ранение, его показатели ЛВ и ИН уменьшаются на соответствующее этим ранениям числу на весь следующий ход. Максимальное значение шока равно -4 даже если герой потерял больше ЕЖ. Так как почти все боевые навыки основаны на ЛВ или ИН, из-за шока понижается и эффективный уровень умений соответственно. Подробнее можно прочитать про шок в базовой книге правил на странице 419.'}
                                 {'\nВыберите нужное значение шока в соответствующем выпадающем списке значений рядом с подписью "Шок от ранений".'}
                             </p>
-                            <h3 className='text-style--modalparagraph'>
+                            <h3 className='text-style--modalWindowparagraph'>
                                 {'Поза атакующего:'}
                             </h3>
-                            <p className='text-style--modalparagraph'>
+                            <p className='text-style--modalWindowparagraph'>
                                 {'Если атакующий находится в неудобной для проведения атаки позе, он получает штраф к эффективному уровню умения. Выберите нужную позу из трёх предложенных вариантов в форме.'}
                             </p>
-                            <h3 className='text-style--modalparagraph'>
+                            <h3 className='text-style--modalWindowparagraph'>
                                 {'Внешние факторы:'}
                             </h3>
-                            <p className='text-style--modalparagraph'>
+                            <p className='text-style--modalWindowparagraph'>
                                 {'Во время боя атакующему могут мешать различные внешние факторы. К умеренным отвлекающим факторам можно отнести, например, роящийся перед лицом рой насекомых. А вот горящая одежда будет уже серьёзным фактором. Последнее слово о том, что именно является умеренным или серьёзным отвлекающим фактором, всегда остаётся за мастером игры.'}
                             </p>
-                            <h3 className='text-style--modalparagraph'>
+                            <h3 className='text-style--modalWindowparagraph'>
                                 {'Внутренние факторы:'}
                             </h3>
-                            <p className='text-style--modalparagraph'>
+                            <p className='text-style--modalWindowparagraph'>
                                 {'На эффективный уровень умения могут влиять и внутренние факторы, связанные с организмом атакующего. Так, например, старая рана или вражеское заклинание могут вызывать постоянную боль разной степени тяжести и мешать атакующему (при этом модификатор за эту боль не связан с шоком!). Другими вариантами внутренних факторов являются состояния опьянения, тошноты или эйфории, так как они в той или иной степени мешают персонажу сосредоточиться. Выберите нужные состояния рядом с соответствующими подписями в форме.'}
                             </p>
-                            <h3 className='text-style--modalparagraph'>
+                            <h3 className='text-style--modalWindowparagraph'>
                                 {'Зоны попадания:'}
                             </h3>
-                            <p className='text-style--modalparagraph'>
+                            <p className='text-style--modalWindowparagraph'>
                                 {'Когда ваш персонаж атакует цель, которая является другим человеком или подобным существом, вы можете выбрать любую видимую вам зону попадания на теле этой цели. Если вы этого не указываете, по умолчанию считается, что вы целитесь в торс (+0 к попаданию).'}
                                 {'\nДля выбора конкретной зоны попадания просто нажмите на один из возможных вариантов списка в соответствующей части формы. Указанный рядом с выбранной зоной модификатор автоматически изменит значение эффективного умения.'}
                             </p>
-                            <h3 className='text-style--modalparagraph'>
+                            <h3 className='text-style--modalWindowparagraph'>
                                 {'Результат:'}
                             </h3>
-                            <p className='text-style--modalparagraph'>
+                            <p className='text-style--modalWindowparagraph'>
                                 {'В данном разделе формы выводится сообщение, описывающее тип выбранной атаки, модификатор уровня умения (если он есть у выбранного типа), возможное движение в процессе атаки, а также возможности активной защиты после совершения выбранной атаки и до начала следующего хода персонажа.'}
                             </p>
-                            <h3 className='text-style--modalparagraph'>
+                            <h3 className='text-style--modalWindowparagraph'>
                                 {'Эффективный уровень умения:'}
                             </h3>
-                            <p className='text-style--modalparagraph'>
+                            <p className='text-style--modalWindowparagraph'>
                                 {'Эффективный уровень умения персонажа отражает реальные шансы успешно совершить атаку с учётом всех применяемых модификаторов.\nЗначение поля "Эффективное умение персонажа" изменяется автоматически при включении/отключении возможных модификаторов и изменении значения базового умения персонажа в форме.'}
                                 {'\nЕсли значение данного поля окажется меньше 3, при попытке провести "бросок успеха" будет выведено предупреждение о невозможности атаки. Это связано с броском трёх шестигранных кубиков и сравнением эффективного умения с выпавшей на кубиках суммой (подробности смотри на странице 343 базовой книги правил). Так как выпавшая сумма не может быть меньше трёх любой персонаж, чьё эффективное умение ниже данного значения, вообще не имеет шансов попасть этой атакой.'}
                             </p>
-                            <h3 className='text-style--modalparagraph'>
+                            <h3 className='text-style--modalWindowparagraph'>
                                 {'Бросок успеха:'}
                             </h3>
-                            <p className='text-style--modalparagraph'>
+                            <p className='text-style--modalWindowparagraph'>
                                 {'Согласно правилам GURPS, всякий раз, когда персонаж пытается выполнить какое-то действие (например, использовать умение для совершения атаки) проводится бросок трёх кубиков для определения удалось ли ему это. Это так называемый "Бросок успеха". Для того, чтобы попытка вашего персонажа достигла успеха, сумма, выпавшая на кубиках, должна быть меньше или равна значению эффективного уровня умения в конкретной ситуации.\nВ противном случае - бросок провален.'}
                                 {'\nНезависимо от числа, против которого вы делаете бросок, результаты 3 и 4 всегда являются критическим успехом, а 17 и 18 - провалом!\nДля совершения броска успеха в форме просто нажмите на соответствующую кнопку. Немного ниже кнопки будет выведено значение суммы чисел сгенерированного "броска кубиков" и результат в зависимости от успеха/провала проверки.'}
                             </p>
@@ -331,17 +331,17 @@ class ContactAttackForm extends Component {
             </section>
 
             <section className='calculator-box'>
-                <a href='#openModal' className='question-button'>?</a>
+                <a href='#open-modalWindow' className='question-button'>?</a>
                 <div className='borderedbottom-block'>
                     <div className="skill-box">
                         <label htmlFor="basikskill-id" className="text-style--maintext textblock-center">Базовое умение персонажа</label>
-                        <input className="text-style--maintext" type="number" name="basikskill" id="basikskill-id" value={this.state.basikskill} onChange={this.handleBasicSkillChange}/>
+                        <input className="text-style--maintext" type="number" name="basikskill" id="basikskill-id" value={this.state.basikskill} required onChange={this.handleBasicSkillChange}/>
                     </div>
                 </div>
 
                 <h2 className="text-style--subtitle">Тип и особенности атаки</h2>
 
-                <select className='select-css' value={this.state.attackType} onChange={this.handleAttackTypeChange}>
+                <select className='select-box' value={this.state.attackType} onChange={this.handleAttackTypeChange}>
                     <option value="base-attack">Атака</option>
                     <option value="move-and-attack">Движение и атака</option>
                     <option value="all-out-attack-accurate">Тотальная атака (точная)</option>
@@ -489,20 +489,20 @@ class ContactAttackForm extends Component {
 
                 <section className="gridcontainer-allhitzones">
                     <div>
-                    <HitZone zoneId={'eyeszone-id'} zoneValue={'-9'} labelText={'Глаза'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
-                    <HitZone zoneId={'skullzone-id'} zoneValue={'-7'} labelText={'Череп'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
-                    <HitZone zoneId={'facezone-id'} zoneValue={'-5'} labelText={'Лицо'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
-                    <HitZone zoneId={'neckzone-id'} zoneValue={'-5'} labelText={'Шея'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
-                    <HitZone zoneId={'torsozone-id'} zoneValue={'0'} labelText={'Торс'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
-                    <HitZone zoneId={'organszone-id'} zoneValue={'-3'} labelText={'Органы'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
+                    <HitZone zoneId={'eyeszone-id'} zoneValue={'-9'} labelText={'Глаза'} onRadioClick={this.handleRadioZoneChange}/>
+                    <HitZone zoneId={'skullzone-id'} zoneValue={'-7'} labelText={'Череп'} onRadioClick={this.handleRadioZoneChange}/>
+                    <HitZone zoneId={'facezone-id'} zoneValue={'-5'} labelText={'Лицо'} onRadioClick={this.handleRadioZoneChange}/>
+                    <HitZone zoneId={'neckzone-id'} zoneValue={'-5'} labelText={'Шея'} onRadioClick={this.handleRadioZoneChange}/>
+                    <HitZone zoneId={'torsozone-id'} zoneValue={'0'} labelText={'Торс'} onRadioClick={this.handleRadioZoneChange}/>
+                    <HitZone zoneId={'organszone-id'} zoneValue={'-3'} labelText={'Органы'} onRadioClick={this.handleRadioZoneChange}/>
                     </div>
                     <div>
-                    <HitZone zoneId={'armzone-id'} zoneValue={'-2'} labelText={'Рука'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
-                    <HitZone zoneId={'handzone-id'} zoneValue={'-4'} labelText={'Кисть'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
-                    <HitZone zoneId={'groinzone-id'} zoneValue={'-3'} labelText={'Пах'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
-                    <HitZone zoneId={'legzone-id'} zoneValue={'-2'} labelText={'Нога'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
-                    <HitZone zoneId={'feetzone-id'} zoneValue={'-4'} labelText={'Ступня'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
-                    <HitZone zoneId={'armorslit-id'} zoneValue={'-8'} labelText={'Щели брони'} checkFlag={false} onRadioClick={this.handleRadioZoneChange}/>
+                    <HitZone zoneId={'armzone-id'} zoneValue={'-2'} labelText={'Рука'} onRadioClick={this.handleRadioZoneChange}/>
+                    <HitZone zoneId={'handzone-id'} zoneValue={'-4'} labelText={'Кисть'} onRadioClick={this.handleRadioZoneChange}/>
+                    <HitZone zoneId={'groinzone-id'} zoneValue={'-3'} labelText={'Пах'} onRadioClick={this.handleRadioZoneChange}/>
+                    <HitZone zoneId={'legzone-id'} zoneValue={'-2'} labelText={'Нога'} onRadioClick={this.handleRadioZoneChange}/>
+                    <HitZone zoneId={'feetzone-id'} zoneValue={'-4'} labelText={'Ступня'} onRadioClick={this.handleRadioZoneChange}/>
+                    <HitZone zoneId={'armorslit-id'} zoneValue={'-8'} labelText={'Щели брони'} onRadioClick={this.handleRadioZoneChange}/>
                     </div>
                 </section>
                 

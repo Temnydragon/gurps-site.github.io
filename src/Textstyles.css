@@ -187,7 +187,7 @@
   opacity: 1;
 }
 
-.text-style--modalparagraph {
+.text-style--modalWindowparagraph {
   font-family: "Book Antiqua", serif;
   font-size: 24px;
   line-height: 28px;
@@ -202,15 +202,16 @@
 
 .text-style--hamburgerheadings {
   display: block;
+  text-decoration: none;
   padding: 12px 0px;
-  color: #333;
   font-family: 'Book Antiqua', sans-serif;
   font-size: 20px;
-  font-weight: 600;
-  text-decoration: none;
+  font-weight: bold;
+  color: #000;
 }
+
 .text-style--hamburgerheadings:hover {
-  background-color: #CFD8DC;
+  background-color: lightgray;
 }
 
 @media screen and (max-width: 920px) {

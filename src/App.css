@@ -146,7 +146,7 @@ a {
 }
 
 a:hover {
-  color:#000000;
+  color:#000;
   text-shadow: rgba(0, 0, 0, 0.25) 0px 4px 3.5px;
 }
 
@@ -170,9 +170,9 @@ ul li:hover > ul,
 ul li:focus-within > ul,
 ul li ul:hover {
   visibility: visible;
-  opacity: 1;
   display: flex;
   flex-direction: column;
+  opacity: 1;
 }
  
 ul li ul li {
@@ -219,18 +219,17 @@ ul li ul li {
 .notoppad {
   padding-top: 0;
 }
-/*--*/
 
 .hamburger-menu {
   display: none;
 }
 
 /* чекбокс для открытия/закрытия "гамбургер-меню" (скрыт изначально) */
-#hamburger-menu--toggle {
+.hamburger-menu--check {
   opacity: 0;
 }
 /* стилизуем "кнопку" для открытия/закрытия при нажатии на "гамбургер-меню" */
-.hamburger-menu--btn {
+.hamburger-menu--button {
   display: flex;
   align-items: center;
   position: relative;
@@ -242,25 +241,28 @@ ul li ul li {
   z-index: 2;
 }
 
-.hamburger-menu--btn > span,
-.hamburger-menu--btn > span::before,
-.hamburger-menu--btn > span::after {
+.hamburger-menu--button > span,
+.hamburger-menu--button > span::before,
+.hamburger-menu--button > span::after {
   display: block;
   position: absolute;
-  width: 100%;
   height: 3px;
   background-color: #527055;
-}
-.hamburger-menu--btn > span::before {
-  content: '';
-  top: -8px;
-}
-.hamburger-menu--btn > span::after {
-  content: '';
-  top: 8px;
+  width: 100%;
 }
 
-/* стилизация контейнера "гамбургера" */
+/* стили для добавления двух полосок "кнопки" для открытия "гамбургер-меню" */
+.hamburger-menu--button > span::before {
+  top: -10px;
+  content: '';
+}
+
+.hamburger-menu--button > span::after {
+  top: 10px;
+  content: '';
+}
+
+/* стилизация контейнера "гамбургер-меню" */
 .hamburger-menu--box {
   display: block;
   position: absolute;
@@ -273,29 +275,32 @@ ul li ul li {
   list-style: none;
   text-align: center;
   background-color: #F5E5BC;
-  box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 5px 8px rgba(0, 0, 0, 0.7);
   border-radius: 0px 0px 10px 10px;
   border: 7px double #527055;
   z-index: 1; /*определение "слоя" на котором будет отображаться блок*/
 }
 
-/*стили для функционирования открытия/закрытия "гамбергер-меню" и изменения самой кнопки*/
-#hamburger-menu--toggle:checked ~ .hamburger-menu--btn > span {
+/*стили для функционирования открытия/закрытия "гамбургер-меню" и изменения самой кнопки*/
+.hamburger-menu--check:checked ~ .hamburger-menu--button > span {
   transform: rotate(45deg);
 }
-#hamburger-menu--toggle:checked ~ .hamburger-menu--btn > span::before {
+
+.hamburger-menu--check:checked ~ .hamburger-menu--button > span::before {
   top: 0;
   transform: rotate(0);
 }
-#hamburger-menu--toggle:checked ~ .hamburger-menu--btn > span::after {
-  top: 0;
+
+.hamburger-menu--check:checked ~ .hamburger-menu--button > span::after {
   transform: rotate(90deg);
+  top: 0;
 }
-#hamburger-menu--toggle:checked ~ .hamburger-menu--box {
-  visibility: visible;
+
+.hamburger-menu--check:checked ~ .hamburger-menu--box {
   /*позиционирование выпадающего меню относительно кнопки "гамбургер" по правой и верхней границе*/
   right: 15px;
   top: 150px;
+  visibility: visible;
 }
 
 
@@ -314,17 +319,10 @@ ul li ul li {
   }
 
   .sytename--link {
-    text-decoration: none; /*убираем подчеркивание текста ссылок*/
-    color: #F8BE24; /*меняем цвет ссылок*/
     padding: auto 0;
     margin-right: 30px;
     font-size: 3vw;
     line-height: 42px;
-    font-weight: bold;
-    font-family: "Book Antiqua", serif;
-    text-align: center;
-    text-shadow: black 1px 0 1px , black 0 1px 1px, black -1px 0 1px, black 0 -1px 1px;
-    display: block;
   }
 
   .gridcontainer--mainimagetext {
@@ -357,12 +355,8 @@ ul li ul li {
 }
 
 @media screen and (max-width: 430px) {
-  .menu__btn {
+  .hamburger-menu--button {
     right: -60%;
-  }
-
-  .menu__box {
-    width: 30%;
   }
 
   .header-content--box {
@@ -380,7 +374,7 @@ ul li ul li {
     padding-right: 0px;
   }
 
-  #hamburger-menu--toggle:checked ~ .hamburger-menu--box {
+  .hamburger-menu--check:checked ~ .hamburger-menu--box {
     visibility: visible;
     right: 5px;
     top: 150px;
