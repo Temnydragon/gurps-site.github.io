@@ -189,27 +189,41 @@ class ContactAttackForm extends Component {
                 diceRollResult: 'К сожалению, вам не удастся выполнить данную атаку из-за слишком низкого эффективного умения!'
               };
         }
-
-        let outputValue = (this.getRandomInt(1, 7) + this.getRandomInt(1, 7) + this.getRandomInt(1, 7));
+        const DicesIcons = ['⚀','⚁','⚂','⚃','⚄','⚅'];
+        let firstDiceValue = this.getRandomInt(1, 7);
+        let secondDiceValue = this.getRandomInt(1, 7);
+        let thirdDiceValue = this.getRandomInt(1, 7);
+        let outputValue = firstDiceValue + secondDiceValue + thirdDiceValue;
+        for (let i = 0; i < DicesIcons.length; i++) {
+          if (firstDiceValue === i+1) {
+            firstDiceValue = DicesIcons[i];
+          }
+          if (secondDiceValue === i+1) {
+            secondDiceValue = DicesIcons[i];
+          }
+          if (thirdDiceValue === i+1) {
+            thirdDiceValue = DicesIcons[i];
+          }
+        }
         if(outputValue <= 4) {
           return {
-            diceRollResult: outputValue + (' (критический успех!' + ')')
+            diceRollResult: (firstDiceValue + secondDiceValue + thirdDiceValue + ' = ' + outputValue + (' (критический успех!' + ')'))
           };
         }
         if(outputValue >= 17) {
           return {
-            diceRollResult: outputValue + (' (критический провал!' + ')')
+            diceRollResult: (firstDiceValue + secondDiceValue + thirdDiceValue + ' = ' + outputValue + (' (критический провал!' + ')'))
           };
         }
         
         if(state.effectiveskill - outputValue < 0) {
           return {
-            diceRollResult: (outputValue + (' (провал на ' + (state.effectiveskill - outputValue)) + ')')
+            diceRollResult: (firstDiceValue + secondDiceValue + thirdDiceValue + ' = ' + outputValue + (' (провал на ' + (state.effectiveskill - outputValue)) + ')')
           };
         }
         else {
           return {
-            diceRollResult: (outputValue + (' (успех на ' + (state.effectiveskill - outputValue)) + ')')
+            diceRollResult: (firstDiceValue + secondDiceValue + thirdDiceValue + ' = ' + outputValue + (' (успех на ' + (state.effectiveskill - outputValue)) + ')')
           };
         }
     }
