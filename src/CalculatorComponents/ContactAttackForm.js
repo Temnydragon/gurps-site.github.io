@@ -5,7 +5,24 @@ import FullAttackDescription from './AttackDescription';
 class ContactAttackForm extends Component {
     constructor(props) {
         super(props)
-        this.state = {basikskill:10, effectiveskill:10, attackType: 'base-attack', nonMainhandCheck: false, isCapturedCheck: false, bigShieldHold: false, evaluateModifier:0, shockModifier:0, pozeModifier:'0', distractionModifier:'0', painModifier:'0', nauseaModifier:'0', drunkModifier:'0', euphoriaModifier:'0', modifierZone: '0'}
+        this.state = {
+            basikskill:10, 
+            effectiveskill:10, 
+            attackType: 'base-attack', 
+            nonMainhandCheck: false, 
+            isCapturedCheck: false, 
+            bigShieldHold: false, 
+            evaluateModifier:0, 
+            shockModifier:0, 
+            pozeModifier:'0', 
+            distractionModifier:'0', 
+            painModifier:'0', 
+            nauseaModifier:'0', 
+            drunkModifier:'0', 
+            euphoriaModifier:'0', 
+            modifierZone: '0', 
+            diceRollResult:''
+        }
         this.handleBasicSkillChange = this.handleBasicSkillChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handlenonMainhandCheck = this.handlenonMainhandCheck.bind(this)
@@ -123,7 +140,6 @@ class ContactAttackForm extends Component {
         this.setState({
             shockModifier : event.target.value
         })
-        
         this.setState(this.ComputEffectiveSkill)
     }
 
@@ -207,12 +223,12 @@ class ContactAttackForm extends Component {
         }
         if(outputValue <= 4) {
           return {
-            diceRollResult: (firstDiceValue + secondDiceValue + thirdDiceValue + ' = ' + outputValue + (' (критический успех!' + ')'))
+            diceRollResult: (firstDiceValue + secondDiceValue + thirdDiceValue + ' = ' + outputValue + ' (критический успех!)')
           };
         }
         if(outputValue >= 17) {
           return {
-            diceRollResult: (firstDiceValue + secondDiceValue + thirdDiceValue + ' = ' + outputValue + (' (критический провал!' + ')'))
+            diceRollResult: (firstDiceValue + secondDiceValue + thirdDiceValue + ' = ' + outputValue + ' (критический провал!)')
           };
         }
         
@@ -228,6 +244,14 @@ class ContactAttackForm extends Component {
         }
     }
 
+    handleChangeScrolltoHidden() {
+        document.body.style.overflow = "hidden";
+    };
+  
+    handleChangeScrolltoShow() {
+        document.body.style.overflow = "auto";
+    };
+
     render() {
         return (
         <form className='form-block' onSubmit={this.handleSubmit}>
@@ -236,7 +260,7 @@ class ContactAttackForm extends Component {
                     <div className='modalWindow-content'>
                         <div className='modalWindow-header'>
                             <h2 className='text-style--maintext'>Модуль контактных атак</h2>
-                            <a href="#close-modalWindow" title="Close" className='text-style--closebutton'>×</a>
+                            <a href="#close-modalWindow" title="Close" className='text-style--closebutton' onClick={this.handleChangeScrolltoShow}>×</a>
                         </div>
                         <div className='modalWindow-maintext'>
                             <p className='text-style--modalWindowparagraph'>
@@ -345,7 +369,7 @@ class ContactAttackForm extends Component {
             </section>
 
             <section className='calculator-box'>
-                <a href='#open-modalWindow' className='question-button'>?</a>
+                <a href='#open-modalWindow' className='question-button' onClick={this.handleChangeScrolltoHidden}>?</a>
                 <div className='borderedbottom-block'>
                     <div className="skill-box">
                         <label htmlFor="basikskill-id" className="text-style--maintext textblock-center">Базовое умение персонажа</label>
@@ -355,7 +379,7 @@ class ContactAttackForm extends Component {
 
                 <h2 className="text-style--subtitle">Тип и особенности атаки</h2>
 
-                <select className='select-box' value={this.state.attackType} onChange={this.handleAttackTypeChange}>
+                <select className='select-box' name="attacktype-select" value={this.state.attackType} onChange={this.handleAttackTypeChange}>
                     <option value="base-attack">Атака</option>
                     <option value="move-and-attack">Движение и атака</option>
                     <option value="all-out-attack-accurate">Тотальная атака (точная)</option>
@@ -417,19 +441,19 @@ class ContactAttackForm extends Component {
                         <label htmlFor='standing-pose-id' className='text-style--checkboxlabel'>
                         Стоя (нет штрафа)
                         </label>
-                        <input type='radio' value='0' name='pose' id='standing-pose-id' checked={this.state.pozeModifier === '0' ? true : false} onChange={this.handlePozeChange}/>
+                        <input type='radio' value='0' name='standing-pose' id='standing-pose-id' checked={this.state.pozeModifier === '0' ? true : false} onChange={this.handlePozeChange}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
                         <label htmlFor='sitting-pose-id' className='text-style--checkboxlabel'>
                         На коленях, сидя или присев (-2)
                         </label>
-                        <input type='radio' value='-2' name='pose' id='sitting-pose-id' checked={this.state.pozeModifier === '-2' ? true : false} onChange={this.handlePozeChange}/>
+                        <input type='radio' value='-2' name='sitting-pose' id='sitting-pose-id' checked={this.state.pozeModifier === '-2' ? true : false} onChange={this.handlePozeChange}/>
                     </div>
                     <div className='gridcontainer-contactmodifiers--checkbox'>
                         <label htmlFor='lying-pose-id' className='text-style--checkboxlabel'>
                         Ползком или лёжа (-4)
                         </label>
-                        <input type='radio' value='-4' name='pose' id='lying-pose-id' checked={this.state.pozeModifier === '-4' ? true : false} onChange={this.handlePozeChange}/>
+                        <input type='radio' value='-4' name='lying-pose' id='lying-pose-id' checked={this.state.pozeModifier === '-4' ? true : false} onChange={this.handlePozeChange}/>
                     </div>
 
                     <h3 className='text-style--attackercondition'>Внешние факторы</h3>

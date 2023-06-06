@@ -2,24 +2,18 @@ import React, { Component } from 'react';
 import DistAttackForm from '../CalculatorComponents/DistAttackForm';
 import ContactAttackForm from '../CalculatorComponents/ContactAttackForm';
 import ThrowingForm from '../CalculatorComponents/ThrowingForm';
+import LivingEpxensesForm from '../CalculatorComponents/LivingExpensesForm';
 
 function FormType(props) {
-  if(props.typeofform === 'Dist') {
-    return (
-      <DistAttackForm />
-    )
-  }
-
-  if(props.typeofform === 'Contact') {
-    return (
-      <ContactAttackForm />
-    )
-  }
-
-  if(props.typeofform === 'Throwing') {
-    return (
-      <ThrowingForm />
-    )
+  switch(props.typeofform) {
+    case 'Dist':
+      return (<DistAttackForm />)
+    case 'Contact':
+      return (<ContactAttackForm />)
+    case 'Throwing':
+      return (<ThrowingForm />)
+    case 'Expenses':
+      return (<LivingEpxensesForm />)
   }
 }
 
@@ -42,6 +36,7 @@ class Calculator extends Component {
             <button onClick={this.handleFormTypeChange} value={'Dist'} name="changetoDistbutton" id="changetoDistbutton-id" className='module-button text-style--modulebuttons'>Дистанционные атаки</button>
             <button onClick={this.handleFormTypeChange} value={'Contact'} name="changetoContactbutton" id="changetoContactbutton-id" className='module-button text-style--modulebuttons'>Контактные атаки</button>
             <button onClick={this.handleFormTypeChange} value={'Throwing'} name="changetoThrowingbutton" id="changetoThrowingbutton-id" className='module-button text-style--modulebuttons'>Метание предметов</button>
+            <button onClick={this.handleFormTypeChange} value={'Expenses'} name="changetoThrowingbutton" id="changetoThrowingbutton-id" className='module-button text-style--modulebuttons'>Расходы на жизнь</button>
           </div>
           <FormType typeofform={this.state.formType} />
         </main>

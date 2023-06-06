@@ -4,7 +4,7 @@ import HitZone from './HitZone';
 class DistAttackForm extends Component {
     constructor(props) {
         super(props)
-        this.state = { basikskill:10, distance:1, speed:0, size:0, accuracy:0, shots:1, zone:0, effectiveskill:10, modifierDistAndSpeed:'+0', modifierSize:'+0', modifierAccuracy:'+0', modifierShots:'+0', modifierZone:'0', diceRollResult:' - '}
+        this.state = { basikskill:10, distance:1, speed:0, size:0, accuracy:0, shots:1, zone:0, effectiveskill:10, modifierDistAndSpeed:'+0', modifierSize:'+0', modifierAccuracy:'+0', modifierShots:'+0', modifierZone:'0', diceRollResult:''}
         this.handleBasicSkillChange = this.handleBasicSkillChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleDistAndSpeedChange = this.handleDistAndSpeedChange.bind(this)
@@ -177,12 +177,12 @@ class DistAttackForm extends Component {
       }
       if(outputValue <= 4) {
         return {
-          diceRollResult: (firstDiceValue + secondDiceValue + thirdDiceValue + ' = ' + outputValue + (' (критический успех!' + ')'))
+          diceRollResult: (firstDiceValue + secondDiceValue + thirdDiceValue + ' = ' + outputValue + ' (критический успех!)')
         };
       }
       if(outputValue >= 17) {
         return {
-          diceRollResult: (firstDiceValue + secondDiceValue + thirdDiceValue + ' = ' + outputValue + (' (критический провал!' + ')'))
+          diceRollResult: (firstDiceValue + secondDiceValue + thirdDiceValue + ' = ' + outputValue + ' (критический провал!)')
         };
       }
       
@@ -263,6 +263,14 @@ class DistAttackForm extends Component {
       this.setState(this.ComputEffectiveSkill)
     }
 
+    handleChangeScrolltoHidden() {
+      document.body.style.overflow = "hidden";
+    };
+
+    handleChangeScrolltoShow() {
+      document.body.style.overflow = "auto";
+    };
+
     render() {
         return (
         <form className='form-block' onSubmit={this.handleSubmit}>
@@ -271,7 +279,7 @@ class DistAttackForm extends Component {
                 <div className='modalWindow-content'>
                   <div className='modalWindow-header'>
                     <h2 className='text-style--maintext'>Модуль дистанционных атак</h2>
-                    <a href="#close-modalWindow" title="Close" className='text-style--closebutton'>×</a>
+                    <a href="#close-modalWindow" title="Close" className='text-style--closebutton' onClick={this.handleChangeScrolltoShow}>×</a>
                   </div>
                   <div className='modalWindow-maintext'>
                     <p className='text-style--modalWindowparagraph'>
@@ -358,7 +366,7 @@ class DistAttackForm extends Component {
             </section>
 
             <section className='calculator-box'>
-              <a href='#open-modalWindow' className='question-button'>?</a>
+              <a href='#open-modalWindow' className='question-button' onClick={this.handleChangeScrolltoHidden}>?</a>
               
               <div className='borderedbottom-block'>
                 <div className="skill-box">
@@ -390,7 +398,7 @@ class DistAttackForm extends Component {
                 </div>
                 <div className="modifiers-box--single">
                   <label htmlFor="shots-id" className="text-style--maintext">Количество выстрелов</label>
-                  <input className="text-style--maintext" type="number" name="shots" id="shots-id" value={this.state.shots} min='1' max='10000' required onChange={this.handleShotsChange}/>
+                  <input className="text-style--maintext" type="number" name="shots" id="shots-id" value={this.state.shots} min='1' required onChange={this.handleShotsChange}/>
                   <input className="text-style--maintext input-style--singlemodifier" type="text" name="shotsoutput" id="shotsoutput-id" value={this.state.modifierShots} readOnly />
                 </div>
               </div>

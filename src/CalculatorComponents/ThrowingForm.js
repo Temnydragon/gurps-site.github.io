@@ -54,6 +54,14 @@ class ThrowingForm extends Component {
 
         return { distance: distanceValue.toFixed(2)}
     }
+    
+    handleChangeScrolltoHidden() {
+        document.body.style.overflow = "hidden";
+    };
+  
+    handleChangeScrolltoShow() {
+        document.body.style.overflow = "auto";
+    };
 
 
     render() {
@@ -64,7 +72,7 @@ class ThrowingForm extends Component {
                         <div className='modalWindow-content'>
                             <div className='modalWindow-header'>
                                 <h2 className='text-style--maintext'>Модуль метания предметов</h2>
-                                <a href="#close-modalWindow" title="Close" className='text-style--closebutton'>×</a>
+                                <a href="#close-modalWindow" title="Close" className='text-style--closebutton' onClick={this.handleChangeScrolltoShow}>×</a>
                             </div>
                             <div className='modalWindow-maintext'>
                                 <p className='text-style--modalWindowparagraph'>
@@ -113,7 +121,7 @@ class ThrowingForm extends Component {
                 </section>
 
                 <section className='calculator-box'>
-                    <a href='#open-modalWindow' className='question-button'>?</a>
+                    <a href='#open-modalWindow' className='question-button' onClick={this.handleChangeScrolltoHidden}>?</a>
                     <div className=''>
                         <div className="skill-box">
                             <label htmlFor="strength-id" className="text-style--maintext textblock-center">Сила персонажа</label>

@@ -80,7 +80,6 @@
   font-weight: bold;
   font-family: "Book Antiqua", serif;
   font-size: 32px;
-  line-height: 2.1vw;
   line-height: 39px;
   color: #FFFFFF;
 }
@@ -91,7 +90,6 @@
   font-weight: bold;
   font-style: italic;
   font-size: 24px;
-  line-height: 1.45vw;
   line-height: 28px;
   color: #C5A5A5;
 }
@@ -233,5 +231,11 @@
 
   .text-style--subtitle {
     font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .text-style--hamburgerheadings {
+    font-size: 16px;
   }
 }
