@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/gurps-site.github.io/static/css/main.6ddddffa.css",
-    "main.js": "/gurps-site.github.io/static/js/main.12bc9b03.js",
+    "main.css": "/gurps-site.github.io/static/css/main.25f906a9.css",
+    "main.js": "/gurps-site.github.io/static/js/main.d5a30480.js",
     "static/media/boardgame.png": "/gurps-site.github.io/static/media/boardgame.64f1d2dd56ef4805c958.png",
     "static/media/paper-sheet_top.jpg": "/gurps-site.github.io/static/media/paper-sheet_top.6fae070b1e289a14da08.jpg",
     "static/media/dices.jpg": "/gurps-site.github.io/static/media/dices.e9233951f4678d8cee7e.jpg",
@@ -16,11 +16,11 @@
     "static/media/d20_dice.png": "/gurps-site.github.io/static/media/d20_dice.839ab40a95492d538f8d.png",
     "static/media/D6Icon.png": "/gurps-site.github.io/static/media/D6Icon.3fb24bbcf291c91e4cd2.png",
     "index.html": "/gurps-site.github.io/index.html",
-    "main.6ddddffa.css.map": "/gurps-site.github.io/static/css/main.6ddddffa.css.map",
-    "main.12bc9b03.js.map": "/gurps-site.github.io/static/js/main.12bc9b03.js.map"
+    "main.25f906a9.css.map": "/gurps-site.github.io/static/css/main.25f906a9.css.map",
+    "main.d5a30480.js.map": "/gurps-site.github.io/static/js/main.d5a30480.js.map"
   },
   "entrypoints": [
-    "static/css/main.6ddddffa.css",
-    "static/js/main.12bc9b03.js"
+    "static/css/main.25f906a9.css",
+    "static/js/main.d5a30480.js"
   ]
 }
