@@ -76,7 +76,7 @@ class ThrowingForm extends Component {
                             </div>
                             <div className='modalWindow-maintext'>
                                 <p className='text-style--modalWindowparagraph'>
-                                    {'Данный модуль позволяет быстро расчитать возможную дальность метания предмета в соответствии с его весом и силой персонажа по правилам GURPS.'}
+                                    {'Данный модуль позволяет быстро рассчитать возможную дальность метания предмета в соответствии с его весом и силой персонажа по правилам GURPS.'}
                                 </p>
                                 <h3 className='text-style--modalWindowparagraph'>
                                     {'Важно:'}
